@@ -22,7 +22,7 @@ Allow the player to incapacitate or remove enemies from the game
 * Canvas
 * Google Firebase** (for scores and rankings)
 ## WireFrame 
-![](https://user-images.githubusercontent.com/40276721/49188930-6d2b3100-f33a-11e8-8b08-56f1df69fa9d.png)
+![](https://user-images.githubusercontent.com/40276721/49189346-f5f69c80-f33b-11e8-9c82-7c22df36f036.png)
 ## Timeline 
 ### Day 1 
 * Screen Scrolling
