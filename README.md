@@ -18,4 +18,4 @@ Add points according to how many collectables are grabbed and how far the avatar
 #### Attacking 
 Allow the player to incapacitate or remove enemies from the game
 ## WireFrame 
-![alt text](https://imgur.com/u0AxqgR)
+![](https://user-images.githubusercontent.com/40276721/49188930-6d2b3100-f33a-11e8-8b08-56f1df69fa9d.png)
