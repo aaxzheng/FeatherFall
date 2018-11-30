@@ -21,11 +21,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function draw() {
     ctx.save();
-    if (offsetY + scrollY <= -1000) {
+    if (offsetY + scrollY <= -2100) {
       scrollY = 0;
       setTimeout(()=> changeDirection(),4000);
     } else if (offsetY + scrollY > 0) {
-      scrollY = -0.75
+      scrollY = -1.5;
     }
     ctx.translate(0,scrollY);
     offsetY += scrollY;
@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function changeDirection() {
-    scrollY = 0.75
+    scrollY = 2.25;
   }
 
 
@@ -61,26 +61,61 @@ document.addEventListener("DOMContentLoaded", () => {
      ctx.clearRect(-offsetX,-offsetY, canvas.width,canvas.height);
 
     drawSprite(imgIndex[idx]);
-    let x = 0
-    let y = 200
-    let y2 = 600
-    ctx.fillRect(x,y2,80,250);  //left
-    ctx.fillRect(x+600,y2,100,250); //right
-    ctx.fillRect(x+80,y2,45,40); //left-notch1
-    ctx.fillRect(x+80,y2+210,45,40); //left-notch2
-    ctx.fillRect(x+200,y2,300,40); //mid-top
-    ctx.fillRect(x+200,y2+210,300,40); //mid-bot
-    ctx.fillRect(x+420,y2,80,250);//mid-column
+    let x = 0;
+    let y = 300;
+    let y2 = 700;
+    let y3 = 1100;
+    let y4 = 1700;
+    let y5 = 2000;
 
-    ctx.fillRect(x,y,100,250);  //left
-    ctx.fillRect(x+620,y,80,250); //right
-    ctx.fillRect(x+600,y,45,40); //left-notch1
-    ctx.fillRect(x+600,y+210,45,40); //left-notch2
-    ctx.fillRect(x+200,y,310,40); //mid-top
-    ctx.fillRect(x+200,y+210,310,40); //mid-bot
-    ctx.fillRect(x+200,y,80,250);//mid-column
-
-
+    // ctx.fillRect(x,y,150,300);
+    // ctx.fillRect(x+550,y,150,300);
+    // ctx.fillRect(x+150,y,100,50);
+    // ctx.fillRect(x+450,y,100,50);
+    // ctx.fillRect(x+150,y+250,100,50);
+    // ctx.fillRect(x+450,y+250,100,50);
+    // ctx.fillRect(x+328,y+100,40,100);
+    //
+    // ctx.fillRect(x,y2,80,250);  //left
+    // ctx.fillRect(x+600,y2,100,250); //right
+    // ctx.fillRect(x+80,y2,45,40); //left-notch1
+    // ctx.fillRect(x+80,y2+210,45,40); //left-notch2
+    // ctx.fillRect(x+200,y2,300,40); //mid-top
+    // ctx.fillRect(x+200,y2+210,300,40); //mid-bot
+    // ctx.fillRect(x+420,y2,80,250);//mid-column
+    //
+    // ctx.fillRect(x,y3,500,50); // left-bar
+    // ctx.fillRect(x+600,y3,100,50); // right-bar
+    // ctx.fillRect(x,y3+450,300,50); //left-bar2
+    // ctx.fillRect(x+400,y3+450,300,50); //right-bar2
+    // ctx.fillRect(x,y3+250,100,50); //left-bar3
+    // ctx.fillRect(x+200,y3+250,500,50);//right-bar3
+    //
+    // ctx.fillRect(x+195,y4,310,40); //mid-top
+    // ctx.fillRect(x,y4,80,250); //left
+    // ctx.fillRect(x+620,y4,80,250); //right
+    // ctx.fillRect(x+80,y4+200,190,50);//left-notch
+    // ctx.fillRect(x+430,y4+200,190,50);//right-notch
+    //
+    // ctx.fillRect(x,y5,70,40); //layer1-block1
+    // ctx.fillRect(x+130,y5,70,40); //layer1-block2
+    // ctx.fillRect(x+250,y5,70,40); //layer1-block3
+    // ctx.fillRect(x+630,y5,70,40); //layer1-block4
+    // ctx.fillRect(x+380,y5,70,40); //layer1-block5
+    // ctx.fillRect(x+500,y5,70,40); //layer1-block6
+    //
+    // ctx.fillRect(x+65,y5+150,70,40); //layer2-block1
+    // ctx.fillRect(x+195,y5+150,70,40); //layer2-block2
+    // ctx.fillRect(x+315,y5+150,70,40); //layer2-block3
+    // ctx.fillRect(x+445,y5+150,70,40); //layer2-block4
+    // ctx.fillRect(x+565,y5+150,70,40); //layer2-block5
+    //
+    // ctx.fillRect(x,y5+300,70,40); //layer3-block1
+    // ctx.fillRect(x+130,y5+300,70,40); //layer3-block2
+    // ctx.fillRect(x+250,y5+300,70,40); //layer3-block3
+    // ctx.fillRect(x+380,y5+300,70,40); //layer3-block4
+    // ctx.fillRect(x+500,y5+300,70,40); //layer3-block5
+    // ctx.fillRect(x+630,y5+300,70,40); //layer3-block6
     idx++
     if (idx > imgIndex.length - 1) {
       idx = 0;
@@ -96,17 +131,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function init() {
     window.requestAnimationFrame(step);
   }
-  //   let index = [1,2,3,4,5,6];
-  //   let width = 86;
-  //   let height = 45;
-  //   let scaledWidth = width * index;
-  //   let scaledHeight = height * index;
-  //   // ctx.drawImage(img,0,0,94,45,0,0,64,64)
-  //   // ctx.drawImage(img,width,0,width,height,0,0,64,64)
-  //   for (let i = 0; i < index.length; i++) {
-  //     ctx.drawImage(img,width*i,200,64,50,0,0,50,50)
-  //   }
-  //
+
 
   // movement(playerX,playerY,offsetY);
   canvas.addEventListener('keydown', function(e) {
@@ -115,20 +140,20 @@ document.addEventListener("DOMContentLoaded", () => {
             if (playerX - 3 < 0) {
               playerX += 2;
             } else {
-              playerX -= 8;
+              playerX -= 10;
             }
          } else if (e.keyCode === 39) {
              if (playerX + 3 > 660) {
                playerX -= 3;
              } else {
-               playerX += 8
+               playerX += 10
              }
 
          } else if (e.keyCode === 38) {
            if(playerY - 3 < 1 - offsetY) {
              playerY += 1;
            } else {
-             playerY -= 8;
+             playerY -= 12;
            }
          } else if (e.keyCode === 40) {
              if(playerY + 3 > canvas.height - offsetY - 50) {
@@ -141,6 +166,6 @@ document.addEventListener("DOMContentLoaded", () => {
          }
      }, false);
      draw();
-     setInterval(draw,10);
+     setInterval(draw,15);
 
 });
