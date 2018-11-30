@@ -12,8 +12,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const canvas = document.getElementById('canvas');
   const ctx = canvas.getContext('2d');
   canvas.tabIndex = 1;
-  let playerX = 150
-  let playerY = 250
+  let playerX = 250
+  let playerY = 40
 
   let offsetX = 0
   let offsetY = 0
@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function draw() {
     ctx.save();
-    if (offsetY + scrollY <= -800) {
+    if (offsetY + scrollY <= -1000) {
       scrollY = 0;
       setTimeout(()=> changeDirection(),4000);
     } else if (offsetY + scrollY > 0) {
@@ -47,13 +47,13 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 
-  let imgIndex = [1,2,3,4,5,6];
+  let imgIndex = [1,1,1,2,2,2,3,3,3,4,4,4,5,5,5,6,6,6];
   let idx = 0;
   let frameCount = 0;
   function step() {
     ctx.beginPath();
     frameCount++;
-    if (frameCount < 6) {
+    if (frameCount < 2) {
       window.requestAnimationFrame(step);
       return;
     }
@@ -61,8 +61,27 @@ document.addEventListener("DOMContentLoaded", () => {
      ctx.clearRect(-offsetX,-offsetY, canvas.width,canvas.height);
 
     drawSprite(imgIndex[idx]);
-    ctx.fillRect(140,200,20,10);
-    idx++;
+    let x = 0
+    let y = 200
+    let y2 = 600
+    ctx.fillRect(x,y2,80,250);  //left
+    ctx.fillRect(x+600,y2,100,250); //right
+    ctx.fillRect(x+80,y2,45,40); //left-notch1
+    ctx.fillRect(x+80,y2+210,45,40); //left-notch2
+    ctx.fillRect(x+200,y2,300,40); //mid-top
+    ctx.fillRect(x+200,y2+210,300,40); //mid-bot
+    ctx.fillRect(x+420,y2,80,250);//mid-column
+
+    ctx.fillRect(x,y,100,250);  //left
+    ctx.fillRect(x+620,y,80,250); //right
+    ctx.fillRect(x+600,y,45,40); //left-notch1
+    ctx.fillRect(x+600,y+210,45,40); //left-notch2
+    ctx.fillRect(x+200,y,310,40); //mid-top
+    ctx.fillRect(x+200,y+210,310,40); //mid-bot
+    ctx.fillRect(x+200,y,80,250);//mid-column
+
+
+    idx++
     if (idx > imgIndex.length - 1) {
       idx = 0;
     }
