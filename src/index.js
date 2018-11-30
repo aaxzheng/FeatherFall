@@ -31,7 +31,6 @@ document.addEventListener("DOMContentLoaded", () => {
     offsetY += scrollY;
     // ctx.clearRect(-offsetX,-offsetY, 300,10000);
     playerBounds();
-    ctx.fillRect(140,200,20,10)
   }
 
   function changeDirection() {
@@ -62,6 +61,7 @@ document.addEventListener("DOMContentLoaded", () => {
      ctx.clearRect(-offsetX,-offsetY, canvas.width,canvas.height);
 
     drawSprite(imgIndex[idx]);
+    ctx.fillRect(140,200,20,10);
     idx++;
     if (idx > imgIndex.length - 1) {
       idx = 0;
@@ -72,7 +72,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function drawSprite(idx) {
     let width = 86;
     let height = 45;
-    ctx.drawImage(img,width*idx,200,64,50,playerX,playerY,50,50);
+    ctx.drawImage(img,width*idx,198,80,80,playerX,playerY,65,65);
   }
   function init() {
     window.requestAnimationFrame(step);
@@ -96,26 +96,26 @@ document.addEventListener("DOMContentLoaded", () => {
             if (playerX - 3 < 0) {
               playerX += 2;
             } else {
-              playerX -= 3;
+              playerX -= 8;
             }
          } else if (e.keyCode === 39) {
-             if (playerX + 3 > 260) {
+             if (playerX + 3 > 660) {
                playerX -= 3;
              } else {
-               playerX += 3
+               playerX += 8
              }
 
          } else if (e.keyCode === 38) {
            if(playerY - 3 < 1 - offsetY) {
              playerY += 1;
            } else {
-             playerY -= 5;
+             playerY -= 8;
            }
          } else if (e.keyCode === 40) {
              if(playerY + 3 > canvas.height - offsetY - 50) {
                playerY -= 4;
              } else {
-               playerY += 5;
+               playerY += 8;
              }
          } else {
            return;
