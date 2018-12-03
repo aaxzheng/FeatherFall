@@ -3,7 +3,7 @@ import Obstacle from './obstacle'
 
 document.addEventListener("DOMContentLoaded", () => {
   const img = new Image();
-  img.src = "../assets/ROfalcon.png";
+  img.src = "/assets/ROfalcon.png";
   img.onload = function() {
     init();
   };
