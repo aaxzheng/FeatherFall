@@ -1,8 +1,8 @@
-import {drawPlayer, movement} from './player';
+import Player from './player';
 import Obstacle from './obstacle'
 
 document.addEventListener("DOMContentLoaded", () => {
-  let img = new Image();
+  const img = new Image();
   img.src = "../assets/ROfalcon.png";
   img.onload = function() {
     init();
@@ -12,43 +12,43 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const canvas = document.getElementById('canvas');
   const ctx = canvas.getContext('2d');
-  const obs1 = new Obstacle(ctx,0,900);
-  const obs2 = new Obstacle(ctx,0,1300);
-  const obs3 = new Obstacle(ctx,0,1700);
-  const obs4 = new Obstacle(ctx,0,2100);
-
+  const obs1 = new Obstacle(ctx,0,400);
+  const obs2 = new Obstacle(ctx,0,1000);
+  const obs3 = new Obstacle(ctx,0,1600);
+  const obs4 = new Obstacle(ctx,0,2200);
+  const obstacles = [];
   canvas.tabIndex = 1;
-  let playerX = 250
-  let playerY = 40
 
   let offsetX = 0
   let offsetY = 0
-  let scrollY = -0.75
+  let scrollY = -.750
+  const player = new Player(img,150,0,offsetY);
 
   function draw() {
     ctx.save();
-    if (offsetY + scrollY <= -2500) {
+    if (offsetY + scrollY <= -2400) {
       scrollY = 0;
       setTimeout(()=> changeDirection(),4000);
     } else if (offsetY + scrollY > 0) {
-      scrollY = -1.5;
+      scrollY = -0.75;
     }
     ctx.translate(0,scrollY);
     offsetY += scrollY;
     ctx.clearRect(-offsetX,-offsetY, 300,10000);
     playerBounds();
+    window.requestAnimationFrame(draw);
   }
 
   function playerBounds() {
-    if (playerY - 3 < 1 - offsetY) {
-      playerY += 2;
-    } else if (playerY + 3 > canvas.height - offsetY - 40) {
-      playerY -= 4;
+    if (player.playerY - 3 < 1 - offsetY) {
+      player.playerY += 2;
+    } else if (player.playerY + 3 > canvas.height - offsetY - 40) {
+      player.playerY -= 4;
     }
   }
 
   function changeDirection() {
-    scrollY = 2.25;
+    scrollY = 1.25;
   }
 
 
@@ -73,16 +73,17 @@ document.addEventListener("DOMContentLoaded", () => {
      frameCount = 0;
 
     ctx.clearRect(-offsetX,-offsetY, canvas.width,canvas.height);
-    drawSprite(imgIndex[idx]);
-    const ob1 = obs1.render();
-    const ob2 = obs2.render();
-    const ob3 = obs3.render();
-    const ob4 = obs4.render();
+    player.drawSprite(ctx,imgIndex[idx]);
+    obs1.borderWall(player)
+      obs1.render(player,offsetX,offsetY);
+      obs2.render(player,offsetX,offsetY);
+      obs3.render(player,offsetX,offsetY);
+      obs4.render(player,offsetX,offsetY);
     let x = 0;
-    let y = 200;
+    let y = 100;
 
-    ctx.fillRect(0,500,150,300);
-    ctx.fillRect(550,500,150,300);
+
+    // ctx.fillRect()
     idx++
     if (idx > imgIndex.length - 1) {
       idx = 0;
@@ -90,11 +91,7 @@ document.addEventListener("DOMContentLoaded", () => {
     window.requestAnimationFrame(step);
   }
 
-  function drawSprite(idx) {
-    let width = 86;
-    let height = 45;
-    ctx.drawImage(img,width*idx,198,80,80,playerX,playerY,65,65);
-  }
+
   function init() {
     window.requestAnimationFrame(step);
   }
@@ -104,35 +101,35 @@ document.addEventListener("DOMContentLoaded", () => {
   canvas.addEventListener('keydown', function(e) {
          if (e.keyCode === 37) {
 
-            if (playerX - 3 < 0) {
-              playerX += 2;
+            if (player.playerX - 3 < 0) {
+              player.playerX += 2;
             } else {
-              playerX -= 10;
+              player.playerX -= 10;
             }
          } else if (e.keyCode === 39) {
-             if (playerX + 3 > 660) {
-               playerX -= 3;
+             if (player.playerX + 3 > 660) {
+               player.playerX -= 3;
              } else {
-               playerX += 10
+               player.playerX += 10
              }
 
          } else if (e.keyCode === 38) {
-           if(playerY - 3 < 1 - offsetY) {
-             playerY += 1;
+           if(player.playerY - 3 < 1 - offsetY) {
+             player.playerY += 1;
            } else {
-             playerY -= 12;
+             player.playerY -= 12;
            }
          } else if (e.keyCode === 40) {
-             if(playerY + 3 > canvas.height - offsetY - 50) {
-               playerY -= 4;
+             if(player.playerY + 3 > canvas.height - offsetY - 50) {
+               player.playerY -= 4;
              } else {
-               playerY += 8;
+               player.playerY += 8;
              }
          } else {
            return;
          }
      }, false);
      draw();
-     setInterval(draw,15);
+    window.requestAnimationFrame(draw);
 
 });
