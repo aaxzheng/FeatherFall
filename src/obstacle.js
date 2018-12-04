@@ -74,14 +74,16 @@ class Obstacle {
       this.obs = this.designs[idx];
       this.ctx = ctx;
       this.params = {};
+      this.tile = new Image();
+      this.tile.src = "../FeatherFall/assets/icetiles.png";
     }
     render(player,offsetX,offsetY) {
       for (let j = 0; j < this.obs.length; j++) {
         let part = this.obs[j];
-        this.ctx.fillStyle ="#ade7ed"
         this.ctx.fillRect(part.x,part.y,part.width,part.height);
         this.checkY(player,part.y,part.height,part.x,part.width);
         this.checkX(player,part.x,part.width,part.y,part.height);
+        this.ctx.drawImage(this.tile,50,12,15,11,part.x,part.y,part.width,part.height);
       }
     }
     checkY(player,partY,height,partX,width) {
@@ -105,13 +107,18 @@ class Obstacle {
       }
     }
     borderWall(player) {
-      this.ctx.fillRect(0,0,50,2500);
-      this.ctx.fillRect(650,0,50,2500);
+      this.ctx.fillRect(0,0,50,2500); //left wall
+      this.ctx.fillRect(650,0,50,2500); //right wall
+      this.ctx.fillRect(0,2800,700,100); //bottom layer
+      this.ctx.drawImage(this.tile,50,12,3,11,0,0,50,2500);
+      this.ctx.drawImage(this.tile,50,12,3,11,650,0,50,2500);
+      this.ctx.drawImage(this.tile,50,12,15,11,0,2800,700,100);
       this.checkX(player,0,50,0,2500);
       this.checkY(player,0,2500,0,50);
       this.checkX(player,650,50,0,2500);
       this.checkY(player,0,2500,650,50);
-
+      this.checkX(player,0,700,2800,100);
+      this.checkY(player,2800,100,0,700);
     }
 
 }

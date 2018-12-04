@@ -11,11 +11,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   const canvas = document.getElementById('canvas');
+  const offscreenCanvas = document.createElement('canvas');
+  const context = offscreenCanvas.getContext('2d');
+  offscreenCanvas.width = "700";
+  offscreenCanvas.height = '3000';
   const ctx = canvas.getContext('2d');
-  const obs1 = new Obstacle(ctx,0,400);
-  const obs2 = new Obstacle(ctx,0,1000);
-  const obs3 = new Obstacle(ctx,0,1600);
-  const obs4 = new Obstacle(ctx,0,2200);
+  const obs1 = new Obstacle(context,0,400);
+  const obs2 = new Obstacle(context,0,1000);
+  const obs3 = new Obstacle(context,0,1600);
+  const obs4 = new Obstacle(context,0,2200);
   canvas.tabIndex = 1;
 
   let offsetX = 0
@@ -25,13 +29,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function draw() {
     ctx.clearRect(-offsetX,-offsetY, 700,3000);
+    fillOffscreen();
     ctx.save();
     ctx.beginPath();
-    obs1.borderWall(player)
-    obs1.render(player,offsetX,offsetY);
-    obs2.render(player,offsetX,offsetY);
-    obs3.render(player,offsetX,offsetY);
-    obs4.render(player,offsetX,offsetY);
+    ctx.drawImage(offscreenCanvas,0,0);
     if (leftArrow) {
 
        if (player.playerX - 3 < 0) {
@@ -73,6 +74,15 @@ document.addEventListener("DOMContentLoaded", () => {
     ctx.closePath();
     playerBounds();
     window.requestAnimationFrame(draw);
+  }
+
+  function fillOffscreen() {
+    obs1.borderWall(player)
+    obs1.render(player,offsetX,offsetY);
+    obs2.render(player,offsetX,offsetY);
+    obs3.render(player,offsetX,offsetY);
+    obs4.render(player,offsetX,offsetY);
+    return offscreenCanvas;
   }
 
   function playerBounds() {
@@ -167,36 +177,6 @@ document.addEventListener("DOMContentLoaded", () => {
       downArrow = true;
     }
 
-   // if (leftArrow) {
-   //
-   //    if (player.playerX - 3 < 0) {
-   //      player.playerX += 2;
-   //    } else {
-   //      player.playerX -= 10;
-   //    }
-   // }
-   //  if (rightArrow) {
-   //     if (player.playerX + 3 > 660) {
-   //       player.playerX -= 3;
-   //     } else {
-   //       player.playerX += 10
-   //     }
-   //
-   // }
-   //  if (upArrow) {
-   //   if(player.playerY - 3 < 1 - offsetY) {
-   //     player.playerY += 1;
-   //   } else {
-   //     player.playerY -= 12;
-   //   }
-   // }
-   //  if (downArrow) {
-   //     if(player.playerY + 3 > canvas.height - offsetY - 50) {
-   //       player.playerY -= 4;
-   //     } else {
-   //       player.playerY += 8;
-   //     }
-   // }
 
    }, false);
      draw();
