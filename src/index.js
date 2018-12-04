@@ -24,8 +24,44 @@ document.addEventListener("DOMContentLoaded", () => {
   const player = new Player(img,150,0,offsetY);
 
   function draw() {
+    ctx.clearRect(-offsetX,-offsetY, 700,3000);
     ctx.save();
     ctx.beginPath();
+    obs1.borderWall(player)
+    obs1.render(player,offsetX,offsetY);
+    obs2.render(player,offsetX,offsetY);
+    obs3.render(player,offsetX,offsetY);
+    obs4.render(player,offsetX,offsetY);
+    if (leftArrow) {
+
+       if (player.playerX - 3 < 0) {
+         player.playerX += 2;
+       } else {
+         player.playerX -= 2;
+       }
+    }
+     if (rightArrow) {
+        if (player.playerX + 3 > 660) {
+          player.playerX -= 2;
+        } else {
+          player.playerX += 2
+        }
+
+    }
+     if (upArrow) {
+      if(player.playerY - 3 < 1 - offsetY) {
+        player.playerY += 2;
+      } else {
+        player.playerY -= 2;
+      }
+    }
+     if (downArrow) {
+        if(player.playerY + 3 > canvas.height - offsetY - 50) {
+          player.playerY -= 2;
+        } else {
+          player.playerY += 2;
+        }
+      }
     // if (offsetY + scrollY <= -2400) {
     //   scrollY = 0;
     //   setTimeout(()=> changeDirection(),4000);
@@ -35,7 +71,6 @@ document.addEventListener("DOMContentLoaded", () => {
     // ctx.translate(0,scrollY);
     // offsetY += scrollY;
     ctx.closePath();
-    ctx.clearRect(-offsetX,-offsetY, 700,3000);
     playerBounds();
     window.requestAnimationFrame(draw);
   }
@@ -76,11 +111,7 @@ document.addEventListener("DOMContentLoaded", () => {
      frameCount = 0;
 
     player.drawSprite(ctx,imgIndex[idx]);
-    obs1.borderWall(player)
-    obs1.render(player,offsetX,offsetY);
-    obs2.render(player,offsetX,offsetY);
-    obs3.render(player,offsetX,offsetY);
-    obs4.render(player,offsetX,offsetY);
+
       ctx.closePath();
       // ctx.clearRect(-offsetX,-offsetY, 700,3000);
     // let x = 0;
@@ -98,45 +129,76 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   let gameKeys = [];
+  let upArrow = false;
+  let rightArrow = false;
+  let downArrow = false;
+  let leftArrow = false;
+
   // movement(playerX,playerY,offsetY);
   canvas.addEventListener('keyup', function(e) {
-    gameKeys[e.keyCode] = false;
+    // gameKeys[e.keyCode] = false;
+    if (e.keyCode == 38) {
+      upArrow = false;
+    }
+    if (e.keyCode == 37) {
+      leftArrow = false;
+    }
+    if (e.keyCode == 39) {
+      rightArrow = false;
+    }
+    if (e.keyCode == 40) {
+      downArrow = false;
+    }
+
   })
   canvas.addEventListener('keydown', function(e) {
-    gameKeys = gameKeys || [];
-    gameKeys[e.keyCode] = true;
-         if (gameKeys && gameKeys[37]) {
+    // gameKeys = gameKeys || [];
+    // gameKeys[e.keyCode] = true;
+    if (e.keyCode == 38) {
+      upArrow = true;
+    }
+    if (e.keyCode == 37) {
+      leftArrow = true;
+    }
+    if (e.keyCode == 39) {
+      rightArrow = true;
+    }
+    if (e.keyCode == 40) {
+      downArrow = true;
+    }
 
-            if (player.playerX - 3 < 0) {
-              player.playerX += 2;
-            } else {
-              player.playerX -= 10;
-            }
-         }
-          if (gameKeys && gameKeys[39]) {
-             if (player.playerX + 3 > 660) {
-               player.playerX -= 3;
-             } else {
-               player.playerX += 10
-             }
+   // if (leftArrow) {
+   //
+   //    if (player.playerX - 3 < 0) {
+   //      player.playerX += 2;
+   //    } else {
+   //      player.playerX -= 10;
+   //    }
+   // }
+   //  if (rightArrow) {
+   //     if (player.playerX + 3 > 660) {
+   //       player.playerX -= 3;
+   //     } else {
+   //       player.playerX += 10
+   //     }
+   //
+   // }
+   //  if (upArrow) {
+   //   if(player.playerY - 3 < 1 - offsetY) {
+   //     player.playerY += 1;
+   //   } else {
+   //     player.playerY -= 12;
+   //   }
+   // }
+   //  if (downArrow) {
+   //     if(player.playerY + 3 > canvas.height - offsetY - 50) {
+   //       player.playerY -= 4;
+   //     } else {
+   //       player.playerY += 8;
+   //     }
+   // }
 
-         }
-          if (gameKeys && gameKeys[38]) {
-           if(player.playerY - 3 < 1 - offsetY) {
-             player.playerY += 1;
-           } else {
-             player.playerY -= 12;
-           }
-         }
-          if (gameKeys && gameKeys[40]) {
-             if(player.playerY + 3 > canvas.height - offsetY - 50) {
-               player.playerY -= 4;
-             } else {
-               player.playerY += 8;
-             }
-         }
-
-     }, false);
+   }, false);
      draw();
     window.requestAnimationFrame(draw);
 
