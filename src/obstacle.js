@@ -78,6 +78,7 @@ class Obstacle {
     render(player,offsetX,offsetY) {
       for (let j = 0; j < this.obs.length; j++) {
         let part = this.obs[j];
+        this.ctx.fillStyle ="#ade7ed"
         this.ctx.fillRect(part.x,part.y,part.width,part.height);
         this.checkY(player,part.y,part.height,part.x,part.width);
         this.checkX(player,part.x,part.width,part.y,part.height);

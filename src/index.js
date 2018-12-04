@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let offsetX = 0
   let offsetY = 0
-  let scrollY = -.750
+  let scrollY = -1.05
   const player = new Player(img,150,0,offsetY);
 
   function draw() {
@@ -50,26 +50,26 @@ document.addEventListener("DOMContentLoaded", () => {
     }
      if (upArrow) {
       if(player.playerY - 3 < 1 - offsetY) {
-        player.playerY += 2;
+        player.playerY += 2.25;
       } else {
-        player.playerY -= 2;
+        player.playerY -= 2.25;
       }
     }
      if (downArrow) {
         if(player.playerY + 3 > canvas.height - offsetY - 50) {
-          player.playerY -= 2;
+          player.playerY -= 1.75;
         } else {
-          player.playerY += 2;
+          player.playerY += 1.75;
         }
       }
-    // if (offsetY + scrollY <= -2400) {
-    //   scrollY = 0;
-    //   setTimeout(()=> changeDirection(),4000);
-    // } else if (offsetY + scrollY > 0) {
-    //   scrollY = -0.75;
-    // }
-    // ctx.translate(0,scrollY);
-    // offsetY += scrollY;
+    if (offsetY + scrollY <= -2400) {
+      scrollY = 0;
+      setTimeout(()=> changeDirection(),4000);
+    } else if (offsetY + scrollY > 0) {
+      scrollY = -1.05;
+    }
+    ctx.translate(0,scrollY);
+    offsetY += scrollY;
     ctx.closePath();
     playerBounds();
     window.requestAnimationFrame(draw);
@@ -85,7 +85,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function changeDirection() {
-    scrollY = 1.25;
+    scrollY = 1.65;
     // ctx.clearRect(-offsetX,-offsetY, 700,3000);
   }
 
