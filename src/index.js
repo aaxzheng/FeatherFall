@@ -25,15 +25,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function draw() {
     ctx.save();
-    if (offsetY + scrollY <= -2400) {
-      scrollY = 0;
-      setTimeout(()=> changeDirection(),4000);
-    } else if (offsetY + scrollY > 0) {
-      scrollY = -0.75;
-    }
-    ctx.translate(0,scrollY);
-    offsetY += scrollY;
-    ctx.clearRect(-offsetX,-offsetY, 300,10000);
+    ctx.beginPath();
+    // if (offsetY + scrollY <= -2400) {
+    //   scrollY = 0;
+    //   setTimeout(()=> changeDirection(),4000);
+    // } else if (offsetY + scrollY > 0) {
+    //   scrollY = -0.75;
+    // }
+    // ctx.translate(0,scrollY);
+    // offsetY += scrollY;
+    ctx.closePath();
+    ctx.clearRect(-offsetX,-offsetY, 700,3000);
     playerBounds();
     window.requestAnimationFrame(draw);
   }
@@ -42,13 +44,14 @@ document.addEventListener("DOMContentLoaded", () => {
     if (player.playerY - 3 < 1 - offsetY) {
       player.playerY += 2;
     } else if (player.playerY + 3 > canvas.height - offsetY - 40) {
+
       player.playerY -= 4;
     }
   }
 
   function changeDirection() {
     scrollY = 1.25;
-    ctx.clearRect(-offsetX,-offsetY, 300,10000);
+    // ctx.clearRect(-offsetX,-offsetY, 700,3000);
   }
 
 
@@ -72,18 +75,16 @@ document.addEventListener("DOMContentLoaded", () => {
     }
      frameCount = 0;
 
-    ctx.clearRect(-offsetX,-offsetY, canvas.width,canvas.height);
     player.drawSprite(ctx,imgIndex[idx]);
     obs1.borderWall(player)
-      obs1.render(player,offsetX,offsetY);
-      obs2.render(player,offsetX,offsetY);
-      obs3.render(player,offsetX,offsetY);
-      obs4.render(player,offsetX,offsetY);
-    let x = 0;
-    let y = 100;
-
-
-    // ctx.fillRect()
+    obs1.render(player,offsetX,offsetY);
+    obs2.render(player,offsetX,offsetY);
+    obs3.render(player,offsetX,offsetY);
+    obs4.render(player,offsetX,offsetY);
+      ctx.closePath();
+      // ctx.clearRect(-offsetX,-offsetY, 700,3000);
+    // let x = 0;
+    // let y = 100;
     idx++
     if (idx > imgIndex.length - 1) {
       idx = 0;
@@ -96,38 +97,45 @@ document.addEventListener("DOMContentLoaded", () => {
     window.requestAnimationFrame(step);
   }
 
-
+  let gameKeys = [];
   // movement(playerX,playerY,offsetY);
+  canvas.addEventListener('keyup', function(e) {
+    gameKeys[e.keyCode] = false;
+  })
   canvas.addEventListener('keydown', function(e) {
-         if (e.keyCode === 37) {
+    gameKeys = gameKeys || [];
+    gameKeys[e.keyCode] = true;
+         if (gameKeys && gameKeys[37]) {
 
             if (player.playerX - 3 < 0) {
               player.playerX += 2;
             } else {
               player.playerX -= 10;
             }
-         } else if (e.keyCode === 39) {
+         }
+          if (gameKeys && gameKeys[39]) {
              if (player.playerX + 3 > 660) {
                player.playerX -= 3;
              } else {
                player.playerX += 10
              }
 
-         } else if (e.keyCode === 38) {
+         }
+          if (gameKeys && gameKeys[38]) {
            if(player.playerY - 3 < 1 - offsetY) {
              player.playerY += 1;
            } else {
              player.playerY -= 12;
            }
-         } else if (e.keyCode === 40) {
+         }
+          if (gameKeys && gameKeys[40]) {
              if(player.playerY + 3 > canvas.height - offsetY - 50) {
                player.playerY -= 4;
              } else {
                player.playerY += 8;
              }
-         } else {
-           return;
          }
+
      }, false);
      draw();
     window.requestAnimationFrame(draw);
