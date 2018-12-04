@@ -3,7 +3,7 @@ import Obstacle from './obstacle'
 
 document.addEventListener("DOMContentLoaded", () => {
   const img = new Image();
-  img.src = "../assets/ROfalcon.png"; 
+  img.src = "../FeatherFall/assets/ROfalcon.png";
   img.onload = function() {
     init();
   };
@@ -16,7 +16,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const obs2 = new Obstacle(ctx,0,1000);
   const obs3 = new Obstacle(ctx,0,1600);
   const obs4 = new Obstacle(ctx,0,2200);
-  const obstacles = [];
   canvas.tabIndex = 1;
 
   let offsetX = 0
@@ -49,6 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function changeDirection() {
     scrollY = 1.25;
+    ctx.clearRect(-offsetX,-offsetY, 300,10000);
   }
 
 
