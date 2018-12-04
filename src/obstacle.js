@@ -1,6 +1,6 @@
 class Obstacle {
 
-  constructor(ctx,x,y) {
+  constructor(ctx,offscreenCtx,x,y) {
     this.designs = [
       [
          {x:x,y:y,width:150,height:300},
@@ -63,7 +63,7 @@ class Obstacle {
          {x:x+500,y:y+300,width:70,height:40}, //layer3-block5
          {x:x+630,y:y+300,width:70,height:40}, //layer3-block6
       ],
-      [
+      [ //design 6
         {x:x+150,y:y,width:450,height:50}, //top-bar
         {x:x+150,y:y+50,width:100,height:80}, //top-notch
         {x:x+100,y:y+250,width:450,height:50}, //bot-bar

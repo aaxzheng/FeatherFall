@@ -1,5 +1,6 @@
 import Player from './player';
 import Obstacle from './obstacle'
+import Collectable from './collectable';
 
 document.addEventListener("DOMContentLoaded", () => {
   const img = new Image();
@@ -16,10 +17,11 @@ document.addEventListener("DOMContentLoaded", () => {
   offscreenCanvas.width = "700";
   offscreenCanvas.height = '3000';
   const ctx = canvas.getContext('2d');
-  const obs1 = new Obstacle(context,0,400);
-  const obs2 = new Obstacle(context,0,1000);
-  const obs3 = new Obstacle(context,0,1600);
-  const obs4 = new Obstacle(context,0,2200);
+  const obs1 = new Obstacle(context,ctx,0,400);
+  const obs2 = new Obstacle(context,ctx,0,1000);
+  const obs3 = new Obstacle(context,ctx,0,1600);
+  const obs4 = new Obstacle(context,ctx,0,2200);
+  const col1 = new Collectable(ctx,350,100);
   canvas.tabIndex = 1;
 
   let offsetX = 0
@@ -63,14 +65,14 @@ document.addEventListener("DOMContentLoaded", () => {
           player.playerY += 1.75;
         }
       }
-    if (offsetY + scrollY <= -2400) {
-      scrollY = 0;
-      setTimeout(()=> changeDirection(),4000);
-    } else if (offsetY + scrollY > 0) {
-      scrollY = -1.05;
-    }
-    ctx.translate(0,scrollY);
-    offsetY += scrollY;
+    // if (offsetY + scrollY <= -2400) {
+    //   scrollY = 0;
+    //   setTimeout(()=> changeDirection(),4000);
+    // } else if (offsetY + scrollY > 0) {
+    //   scrollY = 0;
+    // }
+    // ctx.translate(0,scrollY);
+    // offsetY += scrollY;
     ctx.closePath();
     playerBounds();
     window.requestAnimationFrame(draw);
@@ -82,6 +84,7 @@ document.addEventListener("DOMContentLoaded", () => {
     obs2.render(player,offsetX,offsetY);
     obs3.render(player,offsetX,offsetY);
     obs4.render(player,offsetX,offsetY);
+    col1.render(player);
     return offscreenCanvas;
   }
 
@@ -121,11 +124,11 @@ document.addEventListener("DOMContentLoaded", () => {
      frameCount = 0;
 
     player.drawSprite(ctx,imgIndex[idx]);
-
       ctx.closePath();
       // ctx.clearRect(-offsetX,-offsetY, 700,3000);
-    // let x = 0;
-    // let y = 100;
+    let x = 60;
+    let y = 100;
+
     idx++
     if (idx > imgIndex.length - 1) {
       idx = 0;
