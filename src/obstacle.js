@@ -32,6 +32,88 @@ class Obstacle {
           new Collectable(ctx2,x+200,y+225),
           new Collectable(ctx2,x+230,y+225),
       ];
+      const collectTwo = [
+         new Collectable(ctx2,x+550,y+50), // ez-path
+         new Collectable(ctx2,x+550,y+90),
+         new Collectable(ctx2,x+550,y+130),
+         new Collectable(ctx2,x+550,y+170),
+         new Collectable(ctx2,x+550,y+210),
+         new Collectable(ctx2,x+230,y+70), //row 1
+         new Collectable(ctx2,x+270,y+70),
+         new Collectable(ctx2,x+310,y+70),
+         new Collectable(ctx2,x+350,y+70),
+         new Collectable(ctx2,x+390,y+70),
+         new Collectable(ctx2,x+230,y+100), //row 2
+         new Collectable(ctx2,x+270,y+100),
+         new Collectable(ctx2,x+350,y+100),
+         new Collectable(ctx2,x+390,y+100),
+         new Collectable(ctx2,x+230,y+130), //row 3
+         new Collectable(ctx2,x+390,y+130),
+         new Collectable(ctx2,x+230,y+160), //row 4
+         new Collectable(ctx2,x+270,y+160),
+         new Collectable(ctx2,x+350,y+160),
+         new Collectable(ctx2,x+390,y+160),
+         new Collectable(ctx2,x+230,y+190), //row 5
+         new Collectable(ctx2,x+270,y+190),
+         new Collectable(ctx2,x+310,y+190),
+         new Collectable(ctx2,x+350,y+190),
+         new Collectable(ctx2,x+390,y+190),
+         new Collectable(ctx2,x+100,y+70), //left notch
+         new Collectable(ctx2,x+100,y+100),
+         new Collectable(ctx2,x+100,y+130),
+         new Collectable(ctx2,x+100,y+160),
+         new Collectable(ctx2,x+100,y+190),
+      ];
+      const collectTwoB = [
+         new Collectable(ctx2,x+150,y+50), // ez-path
+         new Collectable(ctx2,x+150,y+90),
+         new Collectable(ctx2,x+150,y+130),
+         new Collectable(ctx2,x+150,y+170),
+         new Collectable(ctx2,x+150,y+210),
+         new Collectable(ctx2,x+310,y+70), //row 1
+         new Collectable(ctx2,x+350,y+70),
+         new Collectable(ctx2,x+390,y+70),
+         new Collectable(ctx2,x+430,y+70),
+         new Collectable(ctx2,x+470,y+70),
+         new Collectable(ctx2,x+310,y+100), //row 2
+         new Collectable(ctx2,x+350,y+100),
+         new Collectable(ctx2,x+430,y+100),
+         new Collectable(ctx2,x+470,y+100),
+         new Collectable(ctx2,x+310,y+130), //row 3
+         new Collectable(ctx2,x+470,y+130),
+         new Collectable(ctx2,x+310,y+160), //row 4
+         new Collectable(ctx2,x+350,y+160),
+         new Collectable(ctx2,x+430,y+160),
+         new Collectable(ctx2,x+470,y+160),
+         new Collectable(ctx2,x+310,y+190), //row 5
+         new Collectable(ctx2,x+350,y+190),
+         new Collectable(ctx2,x+390,y+190),
+         new Collectable(ctx2,x+430,y+190),
+         new Collectable(ctx2,x+470,y+190),
+         new Collectable(ctx2,x+600,y+70), //left notch
+         new Collectable(ctx2,x+600,y+100),
+         new Collectable(ctx2,x+600,y+130),
+         new Collectable(ctx2,x+600,y+160),
+         new Collectable(ctx2,x+600,y+190),
+       ];
+      const collectThree = [
+       new Collectable(ctx2,x+475,y+25), //top gap
+       new Collectable(ctx2,x+525,y+25),
+       new Collectable(ctx2,x+175,y+175), //mid gap
+       new Collectable(ctx2,x+225,y+175),
+       new Collectable(ctx2,x+325,y+325), //bot gap
+       new Collectable(ctx2,x+375,y+325),
+       new Collectable(ctx2,x+625,y+100), // tri-1
+       new Collectable(ctx2,x+605,y+125),
+       new Collectable(ctx2,x+585,y+100),
+       new Collectable(ctx2,x+605,y+75),
+       new Collectable(ctx2,x+75,y+275),//tri-2
+       new Collectable(ctx2,x+95,y+225),
+       new Collectable(ctx2,x+115,y+275),
+       new Collectable(ctx2,x+75,y+75),//tri-3
+       new Collectable(ctx2,x+95,y+125),
+       new Collectable(ctx2,x+115,y+75),
+     ];
       this.designs = [
       [ //design 1
          {x:x,y:y,width:150,height:300,collect:collectOne}, //top_left
@@ -42,32 +124,32 @@ class Obstacle {
          {x:x+450,y:y+250,width:100,height:50}, //bottom_right_notch
          {x:x+328,y:y+100,width:40,height:100}, //mid_box
       ],
-      // [ //design 2
-      //    {x:x,y:y,width:80,height:250,collect:[]},  //left
-      //    {x:x+600,y:y,width:100,height:250}, //right
-      //    {x:x+80,y:y,width:45,height:40}, //left-notch1
-      //    {x:x+80,y:y+210,width:45,height:40}, //left-notch2
-      //    {x:x+200,y:y,width:300,height:40}, //mid-top
-      //    {x:x+200,y:y+210,width:300,height:40}, //mid-bot
-      //    {x:x+420,y:y,width:80,height:250},//mid-column
-      // ],
-      // [ //design 2 -flipped
-      //    {x:x,y:y,width:100,height:250,collect:[]},  //left
-      //    {x:x+620,y:y,width:80,height:250}, //right
-      //    {x:x+600,y:y,width:45,height:40}, //left-notch1
-      //    {x:x+600,y:y+210,width:45,height:40}, //left-notch2
-      //    {x:x+200,y:y,width:310,height:40}, //mid-top
-      //    {x:x+200,y:y+210,width:310,height:40}, //mid-bot
-      //    {x:x+200,y:y,width:80,height:250},//mid-column
-      // ],
-      // [ //design 3
-      //    {x:x,y:y,width:500,height:50,collect:[]}, // left-bar
-      //    {x:x+600,y:y,width:100,height:50}, // right-bar
-      //    {x:x,y:y+300,width:300,height:50}, //left-bar2
-      //    {x:x+400,y:y+300,width:300,height:50}, //right-bar2
-      //    {x:x,y:y+150,width:100,height:50}, //left-bar3
-      //    {x:x+200,y:y+150,width:500,height:50},//right-bar3
-      // ],
+      [ //design 2
+         {x:x,y:y,width:80,height:250,collect:collectTwo},  //left
+         {x:x+600,y:y,width:100,height:250}, //right
+         {x:x+80,y:y,width:45,height:40}, //left-notch1
+         {x:x+80,y:y+210,width:45,height:40}, //left-notch2
+         {x:x+200,y:y,width:300,height:40}, //mid-top
+         {x:x+200,y:y+210,width:300,height:40}, //mid-bot
+         {x:x+420,y:y,width:80,height:250},//mid-column
+      ],
+      [ //design 2 -flipped
+         {x:x,y:y,width:100,height:250,collect:collectTwoB},  //left
+         {x:x+620,y:y,width:80,height:250}, //right
+         {x:x+600,y:y,width:45,height:40}, //left-notch1
+         {x:x+600,y:y+210,width:45,height:40}, //left-notch2
+         {x:x+200,y:y,width:310,height:40}, //mid-top
+         {x:x+200,y:y+210,width:310,height:40}, //mid-bot
+         {x:x+200,y:y,width:80,height:250},//mid-column
+      ],
+      [ //design 3
+         {x:x,y:y,width:500,height:50,collect:collectThree}, // left-bar
+         {x:x+600,y:y,width:100,height:50}, // right-bar
+         {x:x,y:y+300,width:300,height:50}, //left-bar2
+         {x:x+400,y:y+300,width:300,height:50}, //right-bar2
+         {x:x,y:y+150,width:100,height:50}, //left-bar3
+         {x:x+200,y:y+150,width:500,height:50},//right-bar3
+      ],
       // [ //design 4
       //    {x:x+195,y:y,width:310,height:40,collect:[]}, //mid-top
       //    {x:x,y:y,width:80,height:250}, //left
@@ -121,7 +203,6 @@ class Obstacle {
 
     renderCollects(player) {
       let collects = this.obs[0].collect
-      debugger;
       for (let i = 0; i < collects.length; i++) {
         collects[i].render(player);
       }
