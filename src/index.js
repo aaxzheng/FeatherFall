@@ -65,26 +65,33 @@ document.addEventListener("DOMContentLoaded", () => {
           player.playerY += 1.75;
         }
       }
-    // if (offsetY + scrollY <= -2400) {
-    //   scrollY = 0;
-    //   setTimeout(()=> changeDirection(),4000);
-    // } else if (offsetY + scrollY > 0) {
-    //   scrollY = 0;
-    // }
-    // ctx.translate(0,scrollY);
-    // offsetY += scrollY;
+    if (offsetY + scrollY <= -2400) {
+      scrollY = 0;
+      setTimeout(()=> changeDirection(),4000);
+    } else if (offsetY + scrollY > 0) {
+      scrollY = 0;
+    }
+    ctx.translate(0,scrollY);
+    offsetY += scrollY;
     ctx.closePath();
     playerBounds();
     window.requestAnimationFrame(draw);
   }
 
+
+
   function fillOffscreen() {
     obs1.borderWall(player)
+    let x = 0;
+    let y = 200;
+
+    
+
     obs1.render(player,offsetX,offsetY);
     obs2.render(player,offsetX,offsetY);
     obs3.render(player,offsetX,offsetY);
     obs4.render(player,offsetX,offsetY);
-    col1.render(player);
+    // col1.render(player);
     return offscreenCanvas;
   }
 
@@ -126,8 +133,8 @@ document.addEventListener("DOMContentLoaded", () => {
     player.drawSprite(ctx,imgIndex[idx]);
       ctx.closePath();
       // ctx.clearRect(-offsetX,-offsetY, 700,3000);
-    let x = 60;
-    let y = 100;
+    let x = 0;
+    let y = 200;
 
     idx++
     if (idx > imgIndex.length - 1) {

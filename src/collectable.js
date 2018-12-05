@@ -12,8 +12,8 @@ class Collectable {
     } else {
     this.ctx.beginPath();
     this.ctx.arc(this.x,this.y,5,0,Math.PI*2);
-    this.ctx.fillStyle = "#ccc";
-    this.ctx.fill();
+    // this.ctx.fillStyle = "#ccc";
+    // this.ctx.fill();
     this.ctx.stroke();
     this.ctx.closePath();
     this.checkY(player,this.y,10,this.x,10);
@@ -22,20 +22,20 @@ class Collectable {
   }
 
   checkY(player,partY,height,partX,width) {
-    if (player.checkModelY(partY,height/2) && player.playerY <= partY && player.checkModelX(partX,width/2)) {
+    if (player.checkModelY(partY,height/1.5) && player.playerY <= partY && player.checkModelX(partX,width*1.25)) {
       this.collected = true;
     }
-    else if (player.checkModelY(partY,height/2) && player.playerY >= partY && player.checkModelX(partX,width/2)) {
+    else if (player.checkModelY(partY,height/1.5) && player.playerY >= partY && player.checkModelX(partX,width*1.25)) {
       this.collected = true;
     } else {
       return;
     }
   }
   checkX(player,x,width,y,height) {
-    if (player.checkModelX(x,width/2) && player.playerX <= x && player.checkModelY(y,height/2)) {
+    if (player.checkModelX(x,width*1.25) && player.playerX <= x && player.checkModelY(y,height/1.5)) {
       this.collected = true;
     }
-    else if (player.checkModelX(x,width/2) && player.playerX >= x && player.checkModelY(y,height/2)) {
+    else if (player.checkModelX(x,width*1.25) && player.playerX >= x && player.checkModelY(y,height/1.5)) {
       this.collected = true;
     } else {
       return;
