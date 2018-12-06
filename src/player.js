@@ -3,6 +3,8 @@ class Player {
     this.playerX = startX;
     this.playerY = startY - offsetY;
     this.model = img;
+    this.score = 0 ;
+    this.health = 100;
   }
   drawSprite(ctx,idx) {
     let width = 86;
@@ -28,5 +30,13 @@ class Player {
     }
      false;
   }
+  outOfBounds(canvas,offsetY) {
+    if (this.playerY < 0 - offsetY- 50 || this.playerY > canvas.height - offsetY +50) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
 }
 export default Player;

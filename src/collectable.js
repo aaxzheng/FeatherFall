@@ -24,9 +24,11 @@ class Collectable {
   checkY(player,partY,height,partX,width) {
     if (player.checkModelY(partY,height/1.5) && player.playerY <= partY && player.checkModelX(partX,width*1.25)) {
       this.collected = true;
+      player.score += 0.5;
     }
     else if (player.checkModelY(partY,height/1.5) && player.playerY >= partY && player.checkModelX(partX,width*1.25)) {
       this.collected = true;
+      player.score += 0.5;
     } else {
       return;
     }
@@ -34,9 +36,11 @@ class Collectable {
   checkX(player,x,width,y,height) {
     if (player.checkModelX(x,width*1.25) && player.playerX <= x && player.checkModelY(y,height/1.5)) {
       this.collected = true;
+      player.score += 0.5;
     }
     else if (player.checkModelX(x,width*1.25) && player.playerX >= x && player.checkModelY(y,height/1.5)) {
       this.collected = true;
+      player.score += 0.5;
     } else {
       return;
     }
