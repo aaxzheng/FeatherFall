@@ -6,7 +6,7 @@
 <title>FeatherFall</title>
  <style>
    * { padding: 0; margin: 0; }
-   canvas { background: #eee; border: 5px solid #945921; border-right: none;}
+   canvas { background: #eee; border: 5px solid #945921; border-right: none; border-left: none;}
  </style>
  <script type="text/javascript" src="./dist/main.js">
  </script>
@@ -16,6 +16,14 @@
 <body>
 <div class="gameboard">
   <div class="bookbind"></div>
+  <div class="live-links">
+    <p class="me-header">Learn More</p>
+    <ul id="me-info">
+      <li><a href="https://aaxzheng.github.io/">[Portfolio]</a></li>
+      <li><a href="https://github.com/aaxzheng">[Github]</a></li>
+      <li><a href="https://www.linkedin.com/in/aaron-xitian-zheng-986580130/">[LinkedIn]</a></li>
+    </ul>
+  </div>
   <canvas id="canvas" width="700" height="500"></canvas>
   <div class="status">
     <p class="stat-header">Status</p>
@@ -26,7 +34,7 @@
       <li id="jewels">Clusters: 0 </li>
     </ul>
     <p class="tutorial">How to Play</p>
-    <p class="tut-text">Use the arrow keys to navigate through the obstacles and grab the coins on the way down. Once you hit the bottom, you will fly back up at an increased speed. Good Luck!</p>
+    <p class="tut-text">Use the arrow keys to navigate through the obstacles and grab the crystals on the way down. Once you hit the bottom, you will fly back up at an increased speed. Good Luck!</p>
   </div>
 </div>
 

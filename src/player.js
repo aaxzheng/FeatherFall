@@ -8,10 +8,19 @@ class Player {
     this.health = 100;
     this.jewels = 0;
   }
-  drawSprite(ctx,idx) {
+  drawSprite(ctx,idx,leftArrow,rightArrow) {
     let width = 86;
     let height = 45;
-    ctx.drawImage(this.model,width*idx,198,80,80,this.playerX,this.playerY,65,65);
+    // ctx.scale(-1,1);
+    // if (rightArrow === true ) {
+      // this.model.src = "../FeatherFall/assets/ROfalconReverse.png";
+      // ctx.clearRect(this.playerX,this.playerY,65,65);
+      ctx.drawImage(this.model,width*idx,198,80,80,this.playerX,this.playerY,65,65);
+    //
+    // } else {
+    //   this.model.src = "../FeatherFall/assets/ROfalcon.png";
+    //   ctx.clearRect(this.playerX,this.playerY,65,65);
+    //   ctx.drawImage(this.model,width*idx,198,80,80,this.playerX,this.playerY,65,65);
   }
 
   checkModelX(obsX,width) {

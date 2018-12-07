@@ -12,12 +12,18 @@ document.addEventListener("DOMContentLoaded", () => {
   const offscreenCanvas = document.createElement('canvas');
   const context = offscreenCanvas.getContext('2d');
   offscreenCanvas.width = "700";
-  offscreenCanvas.height = '3000';
+  offscreenCanvas.height = '6000';
   const ctx = canvas.getContext('2d');
-  const obs1 = new Obstacle(context,ctx,0,100);
+  const obs1 = new Obstacle(context,ctx,0,400);
   const obs2 = new Obstacle(context,ctx,0,1000);
   const obs3 = new Obstacle(context,ctx,0,1600);
   const obs4 = new Obstacle(context,ctx,0,2200);
+  const obs5 = new Obstacle(context,ctx,0,2800);
+  const obs6 = new Obstacle(context,ctx,0,3400);
+  const obs7 = new Obstacle(context,ctx,0,4200);
+  const obs8 = new Obstacle(context,ctx,0,5000);
+
+
   canvas.tabIndex = 1;
   let offsetX = 0
   let offsetY = 0
@@ -26,7 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function draw() {
     canvas.focus();
-    ctx.clearRect(-offsetX,-offsetY, 700,3000);
+    ctx.clearRect(-offsetX,-offsetY, 700,6000);
     fillOffscreen();
     ctx.save();
     ctx.beginPath();
@@ -61,14 +67,14 @@ document.addEventListener("DOMContentLoaded", () => {
           player.playerY += 1.75;
         }
       }
-    // if (offsetY + scrollY <= -2400) {
-    //   scrollY = 0;
-    //   setTimeout(()=> changeDirection(),4000);
-    // } else if (offsetY + scrollY > 0) {
-    //   scrollY = 0;
-    // }
-    // ctx.translate(0,scrollY);
-    // offsetY += scrollY;
+    if (offsetY + scrollY <= -5400) {
+      scrollY = 0;
+      setTimeout(()=> changeDirection(),4000);
+    } else if (offsetY + scrollY > 0) {
+      scrollY = 0;
+    }
+    ctx.translate(0,scrollY);
+    offsetY += scrollY;
     ctx.closePath();
     playerBounds();
     updateStatus();
@@ -86,6 +92,11 @@ document.addEventListener("DOMContentLoaded", () => {
     obs2.render(player,offsetX,offsetY);
     obs3.render(player,offsetX,offsetY);
     obs4.render(player,offsetX,offsetY);
+    obs5.render(player,offsetX,offsetY);
+    obs6.render(player,offsetX,offsetY);
+    obs7.render(player,offsetX,offsetY);
+    obs8.render(player,offsetX,offsetY);
+
     return offscreenCanvas;
   }
 
@@ -116,16 +127,18 @@ document.addEventListener("DOMContentLoaded", () => {
   let frameCount = 0;
 
   function step() {
-    ctx.beginPath();
     frameCount++;
     if (frameCount < 1) {
+      // console.log(frameCount);
       window.requestAnimationFrame(step);
       return;
     }
+    ctx.beginPath();
      frameCount = 0;
 
-    player.drawSprite(ctx,imgIndex[idx]);
+    player.drawSprite(ctx,imgIndex[idx],leftArrow,rightArrow);
       ctx.closePath();
+
       // ctx.clearRect(-offsetX,-offsetY, 700,3000);
     let x = 0;
     let y = 200;
@@ -180,7 +193,6 @@ document.addEventListener("DOMContentLoaded", () => {
     if (e.keyCode == 40) {
       downArrow = true;
     }
-
 
    }, false);
      draw();

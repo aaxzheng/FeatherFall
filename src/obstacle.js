@@ -52,7 +52,7 @@ class Obstacle {
          new Collectable(ctx2,x+390,y+100),
          new Collectable(ctx2,x+230,y+130), //row 3
          new Collectable(ctx2,x+390,y+130),
-         new Treasure(ctx2,x+310,y+130),
+         new Treasure(ctx2,x+300,y+120),
          new Collectable(ctx2,x+230,y+160), //row 4
          new Collectable(ctx2,x+270,y+160),
          new Collectable(ctx2,x+350,y+160),
@@ -109,19 +109,24 @@ class Obstacle {
        new Collectable(ctx2,x+325,y+325), //bot gap
        new Collectable(ctx2,x+375,y+325),
        new Collectable(ctx2,x+625,y+100), // tri-1
+       new Treasure(ctx2,x+596,y+95),
        new Collectable(ctx2,x+605,y+125),
        new Collectable(ctx2,x+585,y+100),
        new Collectable(ctx2,x+605,y+75),
        new Collectable(ctx2,x+75,y+275),//tri-2
+       new Treasure(ctx2,x+86,y+245),
        new Collectable(ctx2,x+95,y+225),
        new Collectable(ctx2,x+115,y+275),
        new Collectable(ctx2,x+75,y+75),//tri-3
        new Collectable(ctx2,x+95,y+125),
-       new Collectable(ctx2,x+115,y+75), ];
+       new Treasure(ctx2,x+86,y+85),
+       new Collectable(ctx2,x+115,y+75),
+       new Treasure(ctx2,x+600,y+245),];
       const collectFour = [
        new Collectable(ctx2,x+210,y+70), //mid
        new Collectable(ctx2,x+250,y+70),
        new Collectable(ctx2,x+290,y+70),
+       new Treasure(ctx2,x+355,y+210),
        new Collectable(ctx2,x+330,y+70),
        new Collectable(ctx2,x+370,y+70),
        new Collectable(ctx2,x+410,y+70),
@@ -188,8 +193,16 @@ class Obstacle {
         new Collectable(ctx2,x+100,y+50),
         new Collectable(ctx2,x+100,y+80),
         new Collectable(ctx2,x+100,y+110),
+        new Treasure(ctx2,x+65,y+270),
         new Collectable(ctx2,x+180,y+160), //left-ent
         new Collectable(ctx2,x+220,y+190),
+        new Collectable(ctx2,x+260,y+65), // left corn
+        new Collectable(ctx2,x+290,y+65),
+        new Collectable(ctx2,x+260,y+95),
+        new Collectable(ctx2,x+390,y+235),//right corn
+        new Collectable(ctx2,x+390,y+205),
+        new Collectable(ctx2,x+360,y+235),
+        new Treasure(ctx2,x+315,y+135),
         new Collectable(ctx2,x+180,y+220),
         new Collectable(ctx2,x+520,y+70), //right-ent
         new Collectable(ctx2,x+480,y+100),
@@ -198,6 +211,7 @@ class Obstacle {
         new Collectable(ctx2,x+600,y+210),
         new Collectable(ctx2,x+600,y+240),
         new Collectable(ctx2,x+600,y+270),
+        new Treasure(ctx2,x+615,y+10),
       ];
       this.designs = [
       [ //design 1
@@ -266,7 +280,7 @@ class Obstacle {
         {x:x+150,y:y+50,width:100,height:80}, //top-notch
         {x:x+100,y:y+250,width:450,height:50}, //bot-bar
         {x:x+400,y:y+150,width:150,height:150}, //bot-notch
-      ]
+      ],
     ];
       let idx = Math.floor(Math.random()*this.designs.length);
       this.obs = this.designs[idx];
@@ -313,18 +327,18 @@ class Obstacle {
       }
     }
     borderWall(player) {
-      this.ctx.fillRect(0,0,50,2500); //left wall
-      this.ctx.fillRect(650,0,50,2500); //right wall
-      this.ctx.fillRect(0,2800,700,100); //bottom layer
-      this.ctx.drawImage(this.tile,50,12,3,11,0,0,50,2500);
-      this.ctx.drawImage(this.tile,50,12,3,11,650,0,50,2500);
-      this.ctx.drawImage(this.tile,50,12,15,11,0,2800,700,100);
-      this.checkX(player,0,50,0,2500);
-      this.checkY(player,0,2500,0,50);
-      this.checkX(player,650,50,0,2500);
-      this.checkY(player,0,2500,650,50);
-      this.checkX(player,0,700,2800,100);
-      this.checkY(player,2800,100,0,700);
+      this.ctx.fillRect(0,0,50,5500); //left wall
+      this.ctx.fillRect(650,0,50,5500); //right wall
+      this.ctx.fillRect(0,5800,700,100); //bottom layer
+      this.ctx.drawImage(this.tile,50,12,3,11,0,0,50,5500);
+      this.ctx.drawImage(this.tile,50,12,3,11,650,0,50,5500);
+      this.ctx.drawImage(this.tile,50,12,15,11,0,5800,700,100);
+      this.checkX(player,0,50,0,5500);
+      this.checkY(player,0,5500,0,50);
+      this.checkX(player,650,50,0,5500);
+      this.checkY(player,0,5500,650,50);
+      this.checkX(player,0,700,5800,100);
+      this.checkY(player,5800,100,0,700);
     }
 
 }
