@@ -1,4 +1,5 @@
 import Collectable from "./collectable";
+import Treasure from "./treasure";
 class Obstacle {
 
   constructor(ctx,ctx2,x,y) {
@@ -11,6 +12,8 @@ class Obstacle {
           new Collectable(ctx2,x+495,y+75),
           new Collectable(ctx2,x+465,y+105),
           new Collectable(ctx2,x+495,y+105),
+          new Treasure(ctx2,x+495,y+140),
+          new Treasure(ctx2,x+180,y+140),
           new Collectable(ctx2,x+525,y+105),
           new Collectable(ctx2,x+465,y+135),
           new Collectable(ctx2,x+465,y+165),
@@ -49,6 +52,7 @@ class Obstacle {
          new Collectable(ctx2,x+390,y+100),
          new Collectable(ctx2,x+230,y+130), //row 3
          new Collectable(ctx2,x+390,y+130),
+         new Treasure(ctx2,x+310,y+130),
          new Collectable(ctx2,x+230,y+160), //row 4
          new Collectable(ctx2,x+270,y+160),
          new Collectable(ctx2,x+350,y+160),
@@ -80,6 +84,7 @@ class Obstacle {
          new Collectable(ctx2,x+430,y+100),
          new Collectable(ctx2,x+470,y+100),
          new Collectable(ctx2,x+310,y+130), //row 3
+         new Treasure(ctx2,x+383,y+115),
          new Collectable(ctx2,x+470,y+130),
          new Collectable(ctx2,x+310,y+160), //row 4
          new Collectable(ctx2,x+350,y+160),
@@ -123,9 +128,11 @@ class Obstacle {
        new Collectable(ctx2,x+450,y+70),
        new Collectable(ctx2,x+490,y+70),
        new Collectable(ctx2,x+90,y+170), //left-bot
+       new Treasure(ctx2,x+110,y+150),
        new Collectable(ctx2,x+110,y+190),
        new Collectable(ctx2,x+90,y+190),
        new Collectable(ctx2,x+610,y+170), //right-bot
+       new Treasure(ctx2,x+570,y+150),
        new Collectable(ctx2,x+610,y+190),
        new Collectable(ctx2,x+590,y+190),
        new Collectable(ctx2,x+100,y+20), //left-top
@@ -196,17 +203,17 @@ class Obstacle {
       [ //design 1
          {x:x,y:y,width:150,height:300,collect:collectOne}, //top_left
          {x:x+550,y:y,width:150,height:300}, //top_right
-         {x:x+150,y:y,width:100,height:50}, //top_left_notch
-         {x:x+450,y:y,width:100,height:50}, //top_right_notch
-         {x:x+150,y:y+250,width:100,height:50}, //bottom_left_notch
-         {x:x+450,y:y+250,width:100,height:50}, //bottom_right_notch
+         {x:x+100,y:y,width:150,height:50}, //top_left_notch
+         {x:x+450,y:y,width:150,height:50}, //top_right_notch
+         {x:x+100,y:y+250,width:150,height:50}, //bottom_left_notch
+         {x:x+450,y:y+250,width:150,height:50}, //bottom_right_notch
          {x:x+328,y:y+100,width:40,height:100}, //mid_box
       ],
       [ //design 2
          {x:x,y:y,width:80,height:250,collect:collectTwo},  //left
          {x:x+600,y:y,width:100,height:250}, //right
-         {x:x+80,y:y,width:45,height:40}, //left-notch1
-         {x:x+80,y:y+210,width:45,height:40}, //left-notch2
+         {x:x+70,y:y,width:55,height:40}, //left-notch1
+         {x:x+70,y:y+210,width:55,height:40}, //left-notch2
          {x:x+200,y:y,width:300,height:40}, //mid-top
          {x:x+200,y:y+210,width:300,height:40}, //mid-bot
          {x:x+420,y:y,width:80,height:250},//mid-column
@@ -214,8 +221,8 @@ class Obstacle {
       [ //design 2 -flipped
          {x:x,y:y,width:100,height:250,collect:collectTwoB},  //left
          {x:x+620,y:y,width:80,height:250}, //right
-         {x:x+600,y:y,width:45,height:40}, //left-notch1
-         {x:x+600,y:y+210,width:45,height:40}, //left-notch2
+         {x:x+590,y:y,width:55,height:40}, //left-notch1
+         {x:x+590,y:y+210,width:55,height:40}, //left-notch2
          {x:x+200,y:y,width:310,height:40}, //mid-top
          {x:x+200,y:y+210,width:310,height:40}, //mid-bot
          {x:x+200,y:y,width:80,height:250},//mid-column
@@ -232,8 +239,8 @@ class Obstacle {
          {x:x+195,y:y,width:310,height:40,collect:collectFour}, //mid-top
          {x:x,y:y,width:80,height:250}, //left
          {x:x+620,y:y,width:80,height:250}, //right
-         {x:x+80,y:y+200,width:190,height:50},//left-notch
-         {x:x+430,y:y+200,width:190,height:50},//right-notch
+         {x:x+60,y:y+200,width:210,height:50},//left-notch
+         {x:x+460,y:y+200,width:210,height:50},//right-notch
       ],
       [ //design 5
          {x:x,y:y,width:70,height:40,collect:collectFive}, //layer1-block1
@@ -258,7 +265,7 @@ class Obstacle {
         {x:x+150,y:y,width:450,height:50,collect:collectSix}, //top-bar
         {x:x+150,y:y+50,width:100,height:80}, //top-notch
         {x:x+100,y:y+250,width:450,height:50}, //bot-bar
-        {x:x+450,y:y+150,width:100,height:150}, //bot-notch
+        {x:x+400,y:y+150,width:150,height:150}, //bot-notch
       ]
     ];
       let idx = Math.floor(Math.random()*this.designs.length);
@@ -287,20 +294,20 @@ class Obstacle {
     }
     checkY(player,partY,height,partX,width) {
       if (player.checkModelY(partY,height) && player.playerY <= partY && player.checkModelX(partX,width)) {
-        player.playerY -= 8;
+        player.playerY -= 6;
       }
       else if (player.checkModelY(partY,height) && player.playerY >= partY && player.checkModelX(partX,width)) {
-        player.playerY += 8;
+        player.playerY += 6;
       } else {
         return;
       }
     }
     checkX(player,x,width,y,height) {
       if (player.checkModelX(x,width) && player.playerX <= x && player.checkModelY(y,height)) {
-        player.playerX -= 8;
+        player.playerX -= 6;
       }
       else if (player.checkModelX(x,width) && player.playerX >= x && player.checkModelY(y,height)) {
-        player.playerX += 8;
+        player.playerX += 6;
       } else {
         return;
       }

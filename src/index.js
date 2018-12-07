@@ -1,7 +1,7 @@
 import Player from './player';
 import Obstacle from './obstacle'
 import Collectable from './collectable';
-
+import Treasure from './treasure';
 document.addEventListener("DOMContentLoaded", () => {
   const img = new Image();
   img.src = "../FeatherFall/assets/ROfalcon.png";
@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
   offscreenCanvas.width = "700";
   offscreenCanvas.height = '3000';
   const ctx = canvas.getContext('2d');
-  const obs1 = new Obstacle(context,ctx,0,400);
+  const obs1 = new Obstacle(context,ctx,0,100);
   const obs2 = new Obstacle(context,ctx,0,1000);
   const obs3 = new Obstacle(context,ctx,0,1600);
   const obs4 = new Obstacle(context,ctx,0,2200);
@@ -25,6 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const player = new Player(img,150,0,offsetY);
 
   function draw() {
+    canvas.focus();
     ctx.clearRect(-offsetX,-offsetY, 700,3000);
     fillOffscreen();
     ctx.save();
@@ -60,14 +61,14 @@ document.addEventListener("DOMContentLoaded", () => {
           player.playerY += 1.75;
         }
       }
-    if (offsetY + scrollY <= -2400) {
-      scrollY = 0;
-      setTimeout(()=> changeDirection(),4000);
-    } else if (offsetY + scrollY > 0) {
-      scrollY = 0;
-    }
-    ctx.translate(0,scrollY);
-    offsetY += scrollY;
+    // if (offsetY + scrollY <= -2400) {
+    //   scrollY = 0;
+    //   setTimeout(()=> changeDirection(),4000);
+    // } else if (offsetY + scrollY > 0) {
+    //   scrollY = 0;
+    // }
+    // ctx.translate(0,scrollY);
+    // offsetY += scrollY;
     ctx.closePath();
     playerBounds();
     updateStatus();
@@ -186,10 +187,11 @@ document.addEventListener("DOMContentLoaded", () => {
     window.requestAnimationFrame(draw);
 
     function updateStatus() {
-      document.getElementById('coins').innerHTML= `Coins Collected: ${player.score}`;
-      document.getElementById('hp').innerHTML= `Health: ${player.health}`;
+      player.tallyScore();
       document.getElementById('score').innerHTML= `Score: ${player.score}`;
-
+      document.getElementById('coins').innerHTML= `Crystals Collected: ${player.coins}`;
+      document.getElementById('hp').innerHTML= `Health: ${player.health}`;
+      document.getElementById('jewels').innerHTML= `Jewels: ${player.jewels}`
     }
 
     function checkDeath() {

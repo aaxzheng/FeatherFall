@@ -3,8 +3,10 @@ class Player {
     this.playerX = startX;
     this.playerY = startY - offsetY;
     this.model = img;
-    this.score = 0 ;
+    this.coins = 0 ;
+    this.score = 1 ;
     this.health = 100;
+    this.jewels = 0;
   }
   drawSprite(ctx,idx) {
     let width = 86;
@@ -37,6 +39,8 @@ class Player {
       return false;
     }
   }
-
+  tallyScore() {
+    this.score = this.coins * 200 + this.jewels * 1000;
+  }
 }
 export default Player;

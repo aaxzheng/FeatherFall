@@ -1,6 +1,7 @@
 #canvas {
   background-image:url(./bg.jpg);
   background-size: cover;
+  z-index: 2;
 }
 .gameboard {
   height:100vh;
@@ -8,12 +9,14 @@
   justify-content: center;
   align-items: center;
   background-image: url(./snowcastle_final.PNG);
+  z-index:-3;
 }
 .status {
   height:500px;
   width:200px;
   display:flex;
   flex-direction: column;
+  align-content: center;
   font-family: "Marck Script",cursive;
   background-image:url(./oldbook.jpeg);
   background-size: cover;
@@ -39,4 +42,27 @@
 #info li {
   margin-bottom:10px;
   list-style: none;
+}
+
+.bookbind {
+  height:515px;
+  z-index: 1;
+  width:40px;
+  background-color: #945921;
+  position: absolute;
+}
+
+.tutorial {
+  margin-top: 40px;
+  display:flex;
+  justify-content: center;
+  font-size: 28px;
+  text-decoration: underline;
+}
+
+.tut-text {
+  padding:0 20px;
+  display:flex;
+  justify-content: center;
+
 }
