@@ -13,6 +13,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const context = offscreenCanvas.getContext('2d');
   offscreenCanvas.width = "700";
   offscreenCanvas.height = '6000';
+  canvas.tabIndex = 1;
+  let offsetX = 0
+  let offsetY = 0
+  let scrollY = -.85
   const ctx = canvas.getContext('2d');
   const obs1 = new Obstacle(context,ctx,0,400);
   const obs2 = new Obstacle(context,ctx,0,1000);
@@ -24,10 +28,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const obs8 = new Obstacle(context,ctx,0,5000);
 
 
-  canvas.tabIndex = 1;
-  let offsetX = 0
-  let offsetY = 0
-  let scrollY = -.85
   const player = new Player(img,150,0,offsetY);
 
   function draw() {
@@ -213,6 +213,5 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
       }
     }
-
 
 });

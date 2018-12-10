@@ -2,216 +2,216 @@ import Collectable from "./collectable";
 import Treasure from "./treasure";
 class Obstacle {
 
-  constructor(ctx,ctx2,x,y) {
+  constructor(ctx,ctx2,x,y,offsetY) {
       const collectOne = [
-          new Collectable(ctx2,x+305,y+135),
-          new Collectable(ctx2,x+305,y+165),
-          new Collectable(ctx2,x+390,y+135),
-          new Collectable(ctx2,x+390,y+165),
-          new Collectable(ctx2,x+465,y+75),
-          new Collectable(ctx2,x+495,y+75),
-          new Collectable(ctx2,x+465,y+105),
-          new Collectable(ctx2,x+495,y+105),
-          new Treasure(ctx2,x+495,y+140),
-          new Treasure(ctx2,x+180,y+140),
-          new Collectable(ctx2,x+525,y+105),
-          new Collectable(ctx2,x+465,y+135),
-          new Collectable(ctx2,x+465,y+165),
-          new Collectable(ctx2,x+465,y+195),
-          new Collectable(ctx2,x+495,y+195),
-          new Collectable(ctx2,x+525,y+195),
-          new Collectable(ctx2,x+465,y+225),
-          new Collectable(ctx2,x+495,y+225),
-          new Collectable(ctx2,x+200,y+75),
-          new Collectable(ctx2,x+230,y+75),
-          new Collectable(ctx2,x+170,y+105),
-          new Collectable(ctx2,x+200,y+105),
-          new Collectable(ctx2,x+230,y+105),
-          new Collectable(ctx2,x+230,y+135),
-          new Collectable(ctx2,x+230,y+165),
-          new Collectable(ctx2,x+170,y+195),
-          new Collectable(ctx2,x+200,y+195),
-          new Collectable(ctx2,x+230,y+195),
-          new Collectable(ctx2,x+200,y+225),
-          new Collectable(ctx2,x+230,y+225),
+          new Collectable(ctx2,x+305,y+135,offsetY),
+          new Collectable(ctx2,x+305,y+165,offsetY),
+          new Collectable(ctx2,x+390,y+135,offsetY),
+          new Collectable(ctx2,x+390,y+165,offsetY),
+          new Collectable(ctx2,x+465,y+75,offsetY),
+          new Collectable(ctx2,x+495,y+75,offsetY),
+          new Collectable(ctx2,x+465,y+105,offsetY),
+          new Collectable(ctx2,x+495,y+105,offsetY),
+          new Treasure(ctx2,x+495,y+140,offsetY),
+          new Treasure(ctx2,x+180,y+140,offsetY),
+          new Collectable(ctx2,x+525,y+105,offsetY),
+          new Collectable(ctx2,x+465,y+135,offsetY),
+          new Collectable(ctx2,x+465,y+165,offsetY),
+          new Collectable(ctx2,x+465,y+195,offsetY),
+          new Collectable(ctx2,x+495,y+195,offsetY),
+          new Collectable(ctx2,x+525,y+195,offsetY),
+          new Collectable(ctx2,x+465,y+225,offsetY),
+          new Collectable(ctx2,x+495,y+225,offsetY),
+          new Collectable(ctx2,x+200,y+75,offsetY),
+          new Collectable(ctx2,x+230,y+75,offsetY),
+          new Collectable(ctx2,x+170,y+105,offsetY),
+          new Collectable(ctx2,x+200,y+105,offsetY),
+          new Collectable(ctx2,x+230,y+105,offsetY),
+          new Collectable(ctx2,x+230,y+135,offsetY),
+          new Collectable(ctx2,x+230,y+165,offsetY),
+          new Collectable(ctx2,x+170,y+195,offsetY),
+          new Collectable(ctx2,x+200,y+195,offsetY),
+          new Collectable(ctx2,x+230,y+195,offsetY),
+          new Collectable(ctx2,x+200,y+225,offsetY),
+          new Collectable(ctx2,x+230,y+225,offsetY),
       ];
       const collectTwo = [
-         new Collectable(ctx2,x+550,y+50), // ez-path
-         new Collectable(ctx2,x+550,y+90),
-         new Collectable(ctx2,x+550,y+130),
-         new Collectable(ctx2,x+550,y+170),
-         new Collectable(ctx2,x+550,y+210),
-         new Collectable(ctx2,x+230,y+70), //row 1
-         new Collectable(ctx2,x+270,y+70),
-         new Collectable(ctx2,x+310,y+70),
-         new Collectable(ctx2,x+350,y+70),
-         new Collectable(ctx2,x+390,y+70),
-         new Collectable(ctx2,x+230,y+100), //row 2
-         new Collectable(ctx2,x+270,y+100),
-         new Collectable(ctx2,x+350,y+100),
-         new Collectable(ctx2,x+390,y+100),
-         new Collectable(ctx2,x+230,y+130), //row 3
-         new Collectable(ctx2,x+390,y+130),
-         new Treasure(ctx2,x+300,y+120),
-         new Collectable(ctx2,x+230,y+160), //row 4
-         new Collectable(ctx2,x+270,y+160),
-         new Collectable(ctx2,x+350,y+160),
-         new Collectable(ctx2,x+390,y+160),
-         new Collectable(ctx2,x+230,y+190), //row 5
-         new Collectable(ctx2,x+270,y+190),
-         new Collectable(ctx2,x+310,y+190),
-         new Collectable(ctx2,x+350,y+190),
-         new Collectable(ctx2,x+390,y+190),
-         new Collectable(ctx2,x+100,y+70), //left notch
-         new Collectable(ctx2,x+100,y+100),
-         new Collectable(ctx2,x+100,y+130),
-         new Collectable(ctx2,x+100,y+160),
-         new Collectable(ctx2,x+100,y+190),
+         new Collectable(ctx2,x+550,y+50,offsetY), // ez-path
+         new Collectable(ctx2,x+550,y+90,offsetY),
+         new Collectable(ctx2,x+550,y+130,offsetY),
+         new Collectable(ctx2,x+550,y+170,offsetY),
+         new Collectable(ctx2,x+550,y+210,offsetY),
+         new Collectable(ctx2,x+230,y+70,offsetY), //row 1
+         new Collectable(ctx2,x+270,y+70,offsetY),
+         new Collectable(ctx2,x+310,y+70,offsetY),
+         new Collectable(ctx2,x+350,y+70,offsetY),
+         new Collectable(ctx2,x+390,y+70,offsetY),
+         new Collectable(ctx2,x+230,y+100,offsetY), //row 2
+         new Collectable(ctx2,x+270,y+100,offsetY),
+         new Collectable(ctx2,x+350,y+100,offsetY),
+         new Collectable(ctx2,x+390,y+100,offsetY),
+         new Collectable(ctx2,x+230,y+130,offsetY), //row 3
+         new Collectable(ctx2,x+390,y+130,offsetY),
+         new Treasure(ctx2,x+300,y+120,offsetY),
+         new Collectable(ctx2,x+230,y+160,offsetY), //row 4
+         new Collectable(ctx2,x+270,y+160,offsetY),
+         new Collectable(ctx2,x+350,y+160,offsetY),
+         new Collectable(ctx2,x+390,y+160,offsetY),
+         new Collectable(ctx2,x+230,y+190,offsetY), //row 5
+         new Collectable(ctx2,x+270,y+190,offsetY),
+         new Collectable(ctx2,x+310,y+190,offsetY),
+         new Collectable(ctx2,x+350,y+190,offsetY),
+         new Collectable(ctx2,x+390,y+190,offsetY),
+         new Collectable(ctx2,x+100,y+70,offsetY), //left notch
+         new Collectable(ctx2,x+100,y+100,offsetY),
+         new Collectable(ctx2,x+100,y+130,offsetY),
+         new Collectable(ctx2,x+100,y+160,offsetY),
+         new Collectable(ctx2,x+100,y+190,offsetY),
       ];
       const collectTwoB = [
-         new Collectable(ctx2,x+150,y+50), // ez-path
-         new Collectable(ctx2,x+150,y+90),
-         new Collectable(ctx2,x+150,y+130),
-         new Collectable(ctx2,x+150,y+170),
-         new Collectable(ctx2,x+150,y+210),
-         new Collectable(ctx2,x+310,y+70), //row 1
-         new Collectable(ctx2,x+350,y+70),
-         new Collectable(ctx2,x+390,y+70),
-         new Collectable(ctx2,x+430,y+70),
-         new Collectable(ctx2,x+470,y+70),
-         new Collectable(ctx2,x+310,y+100), //row 2
-         new Collectable(ctx2,x+350,y+100),
-         new Collectable(ctx2,x+430,y+100),
-         new Collectable(ctx2,x+470,y+100),
-         new Collectable(ctx2,x+310,y+130), //row 3
-         new Treasure(ctx2,x+383,y+115),
-         new Collectable(ctx2,x+470,y+130),
-         new Collectable(ctx2,x+310,y+160), //row 4
-         new Collectable(ctx2,x+350,y+160),
-         new Collectable(ctx2,x+430,y+160),
-         new Collectable(ctx2,x+470,y+160),
-         new Collectable(ctx2,x+310,y+190), //row 5
-         new Collectable(ctx2,x+350,y+190),
-         new Collectable(ctx2,x+390,y+190),
-         new Collectable(ctx2,x+430,y+190),
-         new Collectable(ctx2,x+470,y+190),
-         new Collectable(ctx2,x+600,y+70), //left notch
-         new Collectable(ctx2,x+600,y+100),
-         new Collectable(ctx2,x+600,y+130),
-         new Collectable(ctx2,x+600,y+160),
-         new Collectable(ctx2,x+600,y+190),
+         new Collectable(ctx2,x+150,y+50,offsetY), // ez-path
+         new Collectable(ctx2,x+150,y+90,offsetY),
+         new Collectable(ctx2,x+150,y+130,offsetY),
+         new Collectable(ctx2,x+150,y+170,offsetY),
+         new Collectable(ctx2,x+150,y+210,offsetY),
+         new Collectable(ctx2,x+310,y+70,offsetY), //row 1
+         new Collectable(ctx2,x+350,y+70,offsetY),
+         new Collectable(ctx2,x+390,y+70,offsetY),
+         new Collectable(ctx2,x+430,y+70,offsetY),
+         new Collectable(ctx2,x+470,y+70,offsetY),
+         new Collectable(ctx2,x+310,y+100,offsetY), //row 2
+         new Collectable(ctx2,x+350,y+100,offsetY),
+         new Collectable(ctx2,x+430,y+100,offsetY),
+         new Collectable(ctx2,x+470,y+100,offsetY),
+         new Collectable(ctx2,x+310,y+130,offsetY), //row 3
+         new Treasure(ctx2,x+383,y+115,offsetY),
+         new Collectable(ctx2,x+470,y+130,offsetY),
+         new Collectable(ctx2,x+310,y+160,offsetY), //row 4
+         new Collectable(ctx2,x+350,y+160,offsetY),
+         new Collectable(ctx2,x+430,y+160,offsetY),
+         new Collectable(ctx2,x+470,y+160,offsetY),
+         new Collectable(ctx2,x+310,y+190,offsetY), //row 5
+         new Collectable(ctx2,x+350,y+190,offsetY),
+         new Collectable(ctx2,x+390,y+190,offsetY),
+         new Collectable(ctx2,x+430,y+190,offsetY),
+         new Collectable(ctx2,x+470,y+190,offsetY),
+         new Collectable(ctx2,x+600,y+70,offsetY), //left notch
+         new Collectable(ctx2,x+600,y+100,offsetY),
+         new Collectable(ctx2,x+600,y+130,offsetY),
+         new Collectable(ctx2,x+600,y+160,offsetY),
+         new Collectable(ctx2,x+600,y+190,offsetY),
        ];
       const collectThree = [
-       new Collectable(ctx2,x+475,y+25), //top gap
-       new Collectable(ctx2,x+525,y+25),
-       new Collectable(ctx2,x+175,y+175), //mid gap
-       new Collectable(ctx2,x+225,y+175),
-       new Collectable(ctx2,x+325,y+325), //bot gap
-       new Collectable(ctx2,x+375,y+325),
-       new Collectable(ctx2,x+625,y+100), // tri-1
-       new Treasure(ctx2,x+596,y+95),
-       new Collectable(ctx2,x+605,y+125),
-       new Collectable(ctx2,x+585,y+100),
-       new Collectable(ctx2,x+605,y+75),
-       new Collectable(ctx2,x+75,y+275),//tri-2
-       new Treasure(ctx2,x+86,y+245),
-       new Collectable(ctx2,x+95,y+225),
-       new Collectable(ctx2,x+115,y+275),
-       new Collectable(ctx2,x+75,y+75),//tri-3
-       new Collectable(ctx2,x+95,y+125),
-       new Treasure(ctx2,x+86,y+85),
-       new Collectable(ctx2,x+115,y+75),
-       new Treasure(ctx2,x+600,y+245),];
+       new Collectable(ctx2,x+475,y+25,offsetY), //top gap
+       new Collectable(ctx2,x+525,y+25,offsetY),
+       new Collectable(ctx2,x+175,y+175,offsetY), //mid gap
+       new Collectable(ctx2,x+225,y+175,offsetY),
+       new Collectable(ctx2,x+325,y+325,offsetY), //bot gap
+       new Collectable(ctx2,x+375,y+325,offsetY),
+       new Collectable(ctx2,x+625,y+100,offsetY), // tri-1
+       new Treasure(ctx2,x+596,y+95,offsetY),
+       new Collectable(ctx2,x+605,y+125,offsetY),
+       new Collectable(ctx2,x+585,y+100,offsetY),
+       new Collectable(ctx2,x+605,y+75,offsetY),
+       new Collectable(ctx2,x+75,y+275,offsetY),//tri-2
+       new Treasure(ctx2,x+86,y+245,offsetY),
+       new Collectable(ctx2,x+95,y+225,offsetY),
+       new Collectable(ctx2,x+115,y+275,offsetY),
+       new Collectable(ctx2,x+75,y+75,offsetY),//tri-3
+       new Collectable(ctx2,x+95,y+125,offsetY),
+       new Treasure(ctx2,x+86,y+85,offsetY),
+       new Collectable(ctx2,x+115,y+75,offsetY),
+       new Treasure(ctx2,x+600,y+245,offsetY),];
       const collectFour = [
-       new Collectable(ctx2,x+210,y+70), //mid
-       new Collectable(ctx2,x+250,y+70),
-       new Collectable(ctx2,x+290,y+70),
-       new Treasure(ctx2,x+355,y+210),
-       new Collectable(ctx2,x+330,y+70),
-       new Collectable(ctx2,x+370,y+70),
-       new Collectable(ctx2,x+410,y+70),
-       new Collectable(ctx2,x+450,y+70),
-       new Collectable(ctx2,x+490,y+70),
-       new Collectable(ctx2,x+90,y+170), //left-bot
-       new Treasure(ctx2,x+110,y+150),
-       new Collectable(ctx2,x+110,y+190),
-       new Collectable(ctx2,x+90,y+190),
-       new Collectable(ctx2,x+610,y+170), //right-bot
-       new Treasure(ctx2,x+570,y+150),
-       new Collectable(ctx2,x+610,y+190),
-       new Collectable(ctx2,x+590,y+190),
-       new Collectable(ctx2,x+100,y+20), //left-top
-       new Collectable(ctx2,x+135,y+20),
-       new Collectable(ctx2,x+170,y+20),
-       new Collectable(ctx2,x+525,y+20), //right-top
-       new Collectable(ctx2,x+560,y+20),
-       new Collectable(ctx2,x+595,y+20),];
+       new Collectable(ctx2,x+210,y+70,offsetY), //mid
+       new Collectable(ctx2,x+250,y+70,offsetY),
+       new Collectable(ctx2,x+290,y+70,offsetY),
+       new Treasure(ctx2,x+355,y+210,offsetY),
+       new Collectable(ctx2,x+330,y+70,offsetY),
+       new Collectable(ctx2,x+370,y+70,offsetY),
+       new Collectable(ctx2,x+410,y+70,offsetY),
+       new Collectable(ctx2,x+450,y+70,offsetY),
+       new Collectable(ctx2,x+490,y+70,offsetY),
+       new Collectable(ctx2,x+90,y+170,offsetY), //left-bot
+       new Treasure(ctx2,x+110,y+150,offsetY),
+       new Collectable(ctx2,x+110,y+190,offsetY),
+       new Collectable(ctx2,x+90,y+190,offsetY),
+       new Collectable(ctx2,x+610,y+170,offsetY), //right-bot
+       new Treasure(ctx2,x+570,y+150,offsetY),
+       new Collectable(ctx2,x+610,y+190,offsetY),
+       new Collectable(ctx2,x+590,y+190,offsetY),
+       new Collectable(ctx2,x+100,y+20,offsetY), //left-top
+       new Collectable(ctx2,x+135,y+20,offsetY),
+       new Collectable(ctx2,x+170,y+20,offsetY),
+       new Collectable(ctx2,x+525,y+20,offsetY), //right-top
+       new Collectable(ctx2,x+560,y+20,offsetY),
+       new Collectable(ctx2,x+595,y+20,offsetY),];
       const collectFive = [
-         new Collectable(ctx2,x+80,y+95), //dia1
-         new Collectable(ctx2,x+120,y+95),
-         new Collectable(ctx2,x+100,y+65),
-         new Collectable(ctx2,x+100,y+125),
-         new Collectable(ctx2,x+210,y+95), //dia2
-         new Collectable(ctx2,x+250,y+95),
-         new Collectable(ctx2,x+230,y+65),
-         new Collectable(ctx2,x+230,y+125),
-         new Collectable(ctx2,x+330,y+95), //dia3
-         new Collectable(ctx2,x+370,y+95),
-         new Collectable(ctx2,x+350,y+65),
-         new Collectable(ctx2,x+350,y+125),
-         new Collectable(ctx2,x+460,y+95), //dia4
-         new Collectable(ctx2,x+500,y+95),
-         new Collectable(ctx2,x+480,y+65),
-         new Collectable(ctx2,x+480,y+125),
-         new Collectable(ctx2,x+580,y+95), //dia5
-         new Collectable(ctx2,x+620,y+95),
-         new Collectable(ctx2,x+600,y+65),
-         new Collectable(ctx2,x+600,y+125),
-         new Collectable(ctx2,x+80,y+245), //dia1-2
-         new Collectable(ctx2,x+120,y+245),
-         new Collectable(ctx2,x+100,y+215),
-         new Collectable(ctx2,x+100,y+275),
-         new Collectable(ctx2,x+205,y+245), //dia2-2
-         new Collectable(ctx2,x+245,y+245),
-         new Collectable(ctx2,x+225,y+215),
-         new Collectable(ctx2,x+225,y+275),
-         new Collectable(ctx2,x+330,y+245), //dia3-3
-         new Collectable(ctx2,x+370,y+245),
-         new Collectable(ctx2,x+350,y+215),
-         new Collectable(ctx2,x+350,y+275),
-         new Collectable(ctx2,x+455,y+245), //dia4-4
-         new Collectable(ctx2,x+495,y+245),
-         new Collectable(ctx2,x+475,y+215),
-         new Collectable(ctx2,x+475,y+275),
-         new Collectable(ctx2,x+580,y+245), //dia5-5
-         new Collectable(ctx2,x+620,y+245),
-         new Collectable(ctx2,x+600,y+215),
-         new Collectable(ctx2,x+600,y+275),
+         new Collectable(ctx2,x+80,y+95,offsetY), //dia1
+         new Collectable(ctx2,x+120,y+95,offsetY),
+         new Collectable(ctx2,x+100,y+65,offsetY),
+         new Collectable(ctx2,x+100,y+125,offsetY),
+         new Collectable(ctx2,x+210,y+95,offsetY), //dia2
+         new Collectable(ctx2,x+250,y+95,offsetY),
+         new Collectable(ctx2,x+230,y+65,offsetY),
+         new Collectable(ctx2,x+230,y+125,offsetY),
+         new Collectable(ctx2,x+330,y+95,offsetY), //dia3
+         new Collectable(ctx2,x+370,y+95,offsetY),
+         new Collectable(ctx2,x+350,y+65,offsetY),
+         new Collectable(ctx2,x+350,y+125,offsetY),
+         new Collectable(ctx2,x+460,y+95,offsetY), //dia4
+         new Collectable(ctx2,x+500,y+95,offsetY),
+         new Collectable(ctx2,x+480,y+65,offsetY),
+         new Collectable(ctx2,x+480,y+125,offsetY),
+         new Collectable(ctx2,x+580,y+95,offsetY), //dia5
+         new Collectable(ctx2,x+620,y+95,offsetY),
+         new Collectable(ctx2,x+600,y+65,offsetY),
+         new Collectable(ctx2,x+600,y+125,offsetY),
+         new Collectable(ctx2,x+80,y+245,offsetY), //dia1-2
+         new Collectable(ctx2,x+120,y+245,offsetY),
+         new Collectable(ctx2,x+100,y+215,offsetY),
+         new Collectable(ctx2,x+100,y+275,offsetY),
+         new Collectable(ctx2,x+205,y+245,offsetY), //dia2-2
+         new Collectable(ctx2,x+245,y+245,offsetY),
+         new Collectable(ctx2,x+225,y+215,offsetY),
+         new Collectable(ctx2,x+225,y+275,offsetY),
+         new Collectable(ctx2,x+330,y+245,offsetY), //dia3-3
+         new Collectable(ctx2,x+370,y+245,offsetY),
+         new Collectable(ctx2,x+350,y+215,offsetY),
+         new Collectable(ctx2,x+350,y+275,offsetY),
+         new Collectable(ctx2,x+455,y+245,offsetY), //dia4-4
+         new Collectable(ctx2,x+495,y+245,offsetY),
+         new Collectable(ctx2,x+475,y+215,offsetY),
+         new Collectable(ctx2,x+475,y+275,offsetY),
+         new Collectable(ctx2,x+580,y+245,offsetY), //dia5-5
+         new Collectable(ctx2,x+620,y+245,offsetY),
+         new Collectable(ctx2,x+600,y+215,offsetY),
+         new Collectable(ctx2,x+600,y+275,offsetY),
       ];
       const collectSix = [
-        new Collectable(ctx2,x+100,y+20), //left-col
-        new Collectable(ctx2,x+100,y+50),
-        new Collectable(ctx2,x+100,y+80),
-        new Collectable(ctx2,x+100,y+110),
-        new Treasure(ctx2,x+65,y+270),
-        new Collectable(ctx2,x+180,y+160), //left-ent
-        new Collectable(ctx2,x+220,y+190),
-        new Collectable(ctx2,x+260,y+65), // left corn
-        new Collectable(ctx2,x+290,y+65),
-        new Collectable(ctx2,x+260,y+95),
-        new Collectable(ctx2,x+390,y+235),//right corn
-        new Collectable(ctx2,x+390,y+205),
-        new Collectable(ctx2,x+360,y+235),
-        new Treasure(ctx2,x+315,y+135),
-        new Collectable(ctx2,x+180,y+220),
-        new Collectable(ctx2,x+520,y+70), //right-ent
-        new Collectable(ctx2,x+480,y+100),
-        new Collectable(ctx2,x+520,y+130),
-        new Collectable(ctx2,x+600,y+180), //right-col
-        new Collectable(ctx2,x+600,y+210),
-        new Collectable(ctx2,x+600,y+240),
-        new Collectable(ctx2,x+600,y+270),
-        new Treasure(ctx2,x+615,y+10),
+        new Collectable(ctx2,x+100,y+20,offsetY), //left-col
+        new Collectable(ctx2,x+100,y+50,offsetY),
+        new Collectable(ctx2,x+100,y+80,offsetY),
+        new Collectable(ctx2,x+100,y+110,offsetY),
+        new Treasure(ctx2,x+65,y+270,offsetY),
+        new Collectable(ctx2,x+180,y+160,offsetY), //left-ent
+        new Collectable(ctx2,x+220,y+190,offsetY),
+        new Collectable(ctx2,x+260,y+65,offsetY), // left corn
+        new Collectable(ctx2,x+290,y+65,offsetY),
+        new Collectable(ctx2,x+260,y+95,offsetY),
+        new Collectable(ctx2,x+390,y+235,offsetY),//right corn
+        new Collectable(ctx2,x+390,y+205,offsetY),
+        new Collectable(ctx2,x+360,y+235,offsetY),
+        new Treasure(ctx2,x+315,y+135,offsetY),
+        new Collectable(ctx2,x+180,y+220,offsetY),
+        new Collectable(ctx2,x+520,y+70,offsetY), //right-ent
+        new Collectable(ctx2,x+480,y+100,offsetY),
+        new Collectable(ctx2,x+520,y+130,offsetY),
+        new Collectable(ctx2,x+600,y+180,offsetY), //right-col
+        new Collectable(ctx2,x+600,y+210,offsetY),
+        new Collectable(ctx2,x+600,y+240,offsetY),
+        new Collectable(ctx2,x+600,y+270,offsetY),
+        new Treasure(ctx2,x+615,y+10,offsetY),
       ];
       this.designs = [
       [ //design 1
@@ -297,13 +297,13 @@ class Obstacle {
         this.checkX(player,part.x,part.width,part.y,part.height);
         this.ctx.drawImage(this.tile,50,12,15,11,part.x,part.y,part.width,part.height);
       }
-        this.renderCollects(player);
+        this.renderCollects(player,offsetY);
     }
 
-    renderCollects(player) {
+    renderCollects(player,offsetY) {
       let collects = this.obs[0].collect
       for (let i = 0; i < collects.length; i++) {
-        collects[i].render(player);
+        collects[i].render(player,offsetY);
       }
     }
     checkY(player,partY,height,partX,width) {

@@ -19,16 +19,21 @@ class Collectable {
     ]
   }
 
-  render(player) {
-    if (this.collected === true) {
-      return;
+  render(player,offsetY) {
+    if (this.inViewport(offsetY,-500,700)) {
+
+      if (this.collected === true) {
+        return;
+      } else {
+      this.ctx.beginPath();
+      this.ctx.arc(this.x,this.y,5,0,Math.PI*2);
+      this.drawSprite();
+      this.ctx.closePath();
+      this.checkY(player,this.y,10,this.x,10);
+      this.checkX(player,this.x,10,this.y,10);
+      }
     } else {
-    this.ctx.beginPath();
-    this.ctx.arc(this.x,this.y,5,0,Math.PI*2);
-    this.drawSprite();
-    this.ctx.closePath();
-    this.checkY(player,this.y,10,this.x,10);
-    this.checkX(player,this.x,10,this.y,10);
+      return;
     }
   }
   drawSprite() {
@@ -62,6 +67,15 @@ class Collectable {
       return;
     }
   }
+
+  inViewport(offsetY,margin,canvas) {
+    if (offsetY <= -this.y - margin && offsetY >= -this.y - margin - canvas) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
 }
 
 export default Collectable;
