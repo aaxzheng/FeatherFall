@@ -3,12 +3,17 @@
   background-size: cover;
   z-index: 2;
 }
+
+#canvas:focus {
+  outline: none;
+}
 .gameboard {
   height:100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   background-image: url(./snowcastle_final.PNG);
+  background-size: cover;
   z-index:-3;
 }
 .status {
