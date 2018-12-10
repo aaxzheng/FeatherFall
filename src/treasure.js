@@ -15,17 +15,20 @@ class Treasure {
     ]
   }
 
-  render(player) {
-    if (this.collected === true) {
-      return;
-    } else {
-    this.ctx.beginPath();
-    this.ctx.arc(this.x,this.y,10,0,Math.PI*2);
-    this.drawSprite();
-    this.ctx.closePath();
-    this.checkY(player,this.y,20,this.x,20);
-    this.checkX(player,this.x,20,this.y,20);
-    }
+  render(player,offsetY) {
+    if (this.inViewport(offsetY,-500,700)) {
+
+      if (this.collected === true) {
+        return;
+      } else {
+      this.ctx.beginPath();
+      this.ctx.arc(this.x,this.y,10,0,Math.PI*2);
+      this.drawSprite();
+      this.ctx.closePath();
+      this.checkY(player,this.y,20,this.x,20);
+      this.checkX(player,this.x,20,this.y,20);
+      }
+    }  
   }
 
   drawSprite() {
@@ -59,6 +62,14 @@ class Treasure {
       return;
     }
   }
+  inViewport(offsetY,margin,canvas) {
+    if (offsetY <= -this.y - margin && offsetY >= -this.y - margin - canvas) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
 }
 
   export default Treasure;
