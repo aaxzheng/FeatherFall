@@ -2,6 +2,8 @@ import Player from './player';
 import Obstacle from './obstacle'
 import Collectable from './collectable';
 import Treasure from './treasure';
+import Snowflakes from './snowflakes';
+
 document.addEventListener("DOMContentLoaded", () => {
   const img = new Image();
   img.src = "../FeatherFall/assets/ROfalcon.png";
@@ -18,6 +20,8 @@ document.addEventListener("DOMContentLoaded", () => {
   let offsetY = 0
   let scrollY = -.85
   const ctx = canvas.getContext('2d');
+  const snow = new Snowflakes(canvas,ctx,offsetY);
+  snow.fillParticles();
   const obs1 = new Obstacle(context,ctx,0,400);
   const obs2 = new Obstacle(context,ctx,0,1000);
   const obs3 = new Obstacle(context,ctx,0,1600);
@@ -135,8 +139,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     ctx.beginPath();
      frameCount = 0;
-
-    player.drawSprite(ctx,imgIndex[idx],leftArrow,rightArrow);
+      snow.draw(offsetY);
+      player.drawSprite(ctx,imgIndex[idx],leftArrow,rightArrow);
       ctx.closePath();
 
       // ctx.clearRect(-offsetX,-offsetY, 700,3000);
