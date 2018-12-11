@@ -58,7 +58,7 @@ class Player {
   dashLeft() {
     // debugger;
     if (this.dashReady >= 0) {
-      this.playerX -= 15;
+      this.playerX -= 8;
 
     } else{
       return;
@@ -72,14 +72,14 @@ class Player {
 
   dashRight() {
     if (this.dashReady >= 0) {
-      this.playerX += 15;
+      this.playerX += 8;
     } else {
       return;
     }
   }
   dashUp() {
     if (this.dashReady >= 0) {
-      this.playerY -= 15;
+      this.playerY -= 8;
 
     } else {
       return;
@@ -88,7 +88,7 @@ class Player {
 
   dashDown() {
     if (this.dashReady >= 0) {
-      this.playerY += 15;
+      this.playerY += 8;
 
     } else {
       return;
