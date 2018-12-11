@@ -7,6 +7,7 @@ class Player {
     this.score = 1 ;
     this.health = 100;
     this.jewels = 0;
+    this.dashReady = 2;
   }
   drawSprite(ctx,idx,leftArrow,rightArrow) {
     let width = 86;
@@ -41,6 +42,7 @@ class Player {
     }
      false;
   }
+
   outOfBounds(canvas,offsetY) {
     if (this.playerY < 0 - offsetY- 50 || this.playerY > canvas.height - offsetY +50) {
       return true;
@@ -48,8 +50,54 @@ class Player {
       return false;
     }
   }
+
   tallyScore() {
     this.score = this.coins * 200 + this.jewels * 1000;
   }
+
+  dashLeft() {
+    // debugger;
+    if (this.dashReady >= 0) {
+      this.playerX -= 15;
+
+    } else{
+      return;
+    }
+  }
+  stopDash(interval) {
+    clearTimeout(this.timeout);
+      clearInterval(interval);
+    this.timeout = setTimeout(()=>this.refreshDash(),2000);
+  }
+
+  dashRight() {
+    if (this.dashReady >= 0) {
+      this.playerX += 15;
+    } else {
+      return;
+    }
+  }
+  dashUp() {
+    if (this.dashReady >= 0) {
+      this.playerY -= 15;
+
+    } else {
+      return;
+    }
+  }
+
+  dashDown() {
+    if (this.dashReady >= 0) {
+      this.playerY += 15;
+
+    } else {
+      return;
+    }
+  }
+
+  refreshDash() {
+    this.dashReady = 2;
+  }
+
 }
 export default Player;

@@ -46,6 +46,7 @@
 
 #info li {
   margin-bottom:10px;
+  font-size: 22px;
   list-style: none;
 }
 
@@ -58,7 +59,7 @@
 }
 
 .tutorial {
-  margin-top: 40px;
+  margin-top: 20px;
   display:flex;
   justify-content: center;
   font-size: 28px;

@@ -5,6 +5,10 @@ import Treasure from './treasure';
 import Snowflakes from './snowflakes';
 
 document.addEventListener("DOMContentLoaded", () => {
+
+  function game () {
+
+
   const img = new Image();
   img.src = "../FeatherFall/assets/ROfalcon.png";
   img.onload = function() {
@@ -32,7 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const obs8 = new Obstacle(context,ctx,0,5000);
 
 
-  const player = new Player(img,150,0,offsetY);
+  const player = new Player(img,320,100,offsetY);
 
   function draw() {
     canvas.focus();
@@ -41,36 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
     ctx.save();
     ctx.beginPath();
     ctx.drawImage(offscreenCanvas,0,0);
-    if (leftArrow) {
-
-       if (player.playerX - 3 < 0) {
-         player.playerX += 2;
-       } else {
-         player.playerX -= 2;
-       }
-    }
-     if (rightArrow) {
-        if (player.playerX + 3 > 660) {
-          player.playerX -= 2;
-        } else {
-          player.playerX += 2
-        }
-
-    }
-     if (upArrow) {
-      if(player.playerY - 3 < 1 - offsetY) {
-        player.playerY += 2.25;
-      } else {
-        player.playerY -= 2.25;
-      }
-    }
-     if (downArrow) {
-        if(player.playerY + 3 > canvas.height - offsetY - 50) {
-          player.playerY -= 1.75;
-        } else {
-          player.playerY += 1.75;
-        }
-      }
+    moveCharacter();
     if (offsetY + scrollY <= -5400) {
       scrollY = 0;
       setTimeout(()=> changeDirection(),4000);
@@ -159,12 +134,12 @@ document.addEventListener("DOMContentLoaded", () => {
     window.requestAnimationFrame(step);
   }
 
-  let gameKeys = [];
+  // let gameKeys = [];
   let upArrow = false;
   let rightArrow = false;
   let downArrow = false;
   let leftArrow = false;
-
+  let space = false;
   // movement(playerX,playerY,offsetY);
   canvas.addEventListener('keyup', function(e) {
     // gameKeys[e.keyCode] = false;
@@ -180,6 +155,9 @@ document.addEventListener("DOMContentLoaded", () => {
     if (e.keyCode == 40) {
       downArrow = false;
     }
+    // if (e.keyCode == 32) {
+    //   space = true;
+    // }
 
   })
   canvas.addEventListener('keydown', function(e) {
@@ -197,25 +175,91 @@ document.addEventListener("DOMContentLoaded", () => {
     if (e.keyCode == 40) {
       downArrow = true;
     }
-
+    if (e.keyCode == 32) {
+      space = true;
+    }
    }, false);
+   function moveCharacter() {
+     if (rightArrow) {
+       if (player.playerX + 3 > 660) {
+         player.playerX -= 5;
+       } else {
+         player.playerX += 2
+         if (space && player.dashReady > 0) {
+           player.dashReady -= 1
+           let interval =  setInterval(() => player.dashRight(),20);
+           setTimeout(() => player.stopDash(interval),360);
+         }
+         space = false
+       }
+
+     }
+     if (leftArrow) {
+
+        if (player.playerX - 3 < 0) {
+          player.playerX += 5;
+        } else {
+          player.playerX -= 2;
+          if (space && player.dashReady > 0) {
+            player.dashReady -= 1
+            let interval =  setInterval(() => player.dashLeft(),20);
+            setTimeout(() => player.stopDash(interval),360);
+          }
+          space = false
+        }
+     }
+      if (upArrow) {
+       if(player.playerY - 3 < 1 - offsetY) {
+         player.playerY += 5;
+       } else {
+         player.playerY -= 2.25;
+         if (space && player.dashReady > 0) {
+           player.dashReady -= 1
+           let interval =  setInterval(() => player.dashUp(),20);
+           setTimeout(() => player.stopDash(interval),360);
+         }
+         space = false
+       }
+     }
+      if (downArrow) {
+         if(player.playerY + 3 > canvas.height - offsetY - 50) {
+           player.playerY -= 5;
+         } else {
+           player.playerY += 1.75;
+           if (space && player.dashReady > 0) {
+             player.dashReady -= 1
+             let interval =  setInterval(() => player.dashDown(),20);
+             setTimeout(() => player.stopDash(interval),360);
+           }
+           space = false
+         }
+       }
+   }
+
+
+
      draw();
     window.requestAnimationFrame(draw);
 
     function updateStatus() {
       player.tallyScore();
       document.getElementById('score').innerHTML= `Score: ${player.score}`;
+      document.getElementById('dash').innerHTML= `Dashes: ${player.dashReady}`;
       document.getElementById('coins').innerHTML= `Crystals Collected: ${player.coins}`;
       document.getElementById('hp').innerHTML= `Health: ${player.health}`;
-      document.getElementById('jewels').innerHTML= `Jewels: ${player.jewels}`
+      document.getElementById('jewels').innerHTML= `Clusters: ${player.jewels}`
     }
 
     function checkDeath() {
       if (player.health <= 0 || player.outOfBounds(canvas,offsetY)) {
-        window.alert("You Died");
+        ctx.clearRect(-offsetX,-offsetY,700,10000);
+        context.clearRect(-offsetX,-offsetY,700,10000);
+        document.location.reload();
+        // game();
       } else {
         return;
       }
     }
-
+  }
+  game();
 });
