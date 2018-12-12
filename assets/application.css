@@ -112,3 +112,32 @@
   padding-top: 80px;
   font-size: 32px;
 }
+
+.game-start {
+  height:500px;
+  width:710px;
+  background-color: white;
+  position:absolute;
+  z-index:3;
+  display:flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  background-image: url("./oldbook.jpeg");
+  background-size: cover;
+}
+
+.game-title {
+  font-family: "Marck Script",cursive;
+  font-size: 64px;
+}
+
+.start-btn {
+  font-family: "Marck Script",cursive;
+  background-color: none;
+  box-sizing: none;
+}
+
+.hide {
+  display:none;
+}
