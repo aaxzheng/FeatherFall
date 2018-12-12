@@ -17,7 +17,7 @@ class Game {
     this.canvas.tabIndex = 1;
     this.offsetX = 0
     this.offsetY = 0
-    this.scrollY = -.85
+    this.scrollY = -1.65
      this.ctx = canvas.getContext('2d');
      this.snow = new Snowflakes(this.canvas,this.ctx,this.offsetY);
     this.snow.fillParticles();
@@ -93,15 +93,15 @@ class Game {
 
      playerBounds() {
       if (this.player.playerY - 3 < 1 - this.offsetY) {
-        this.player.playerY += 2;
+        this.player.playerY += 4;
       } else if (this.player.playerY + 3 > this.canvas.height - this.offsetY - 40) {
 
-        this.player.playerY -= 4;
+        this.player.playerY -= 6;
       }
     }
 
      changeDirection() {
-      this.scrollY = 1.65;
+      this.scrollY = 2.65;
       // this.ctx.clearRect(-this.offsetX,-this.offsetY, 700,3000);
     }
 
@@ -187,7 +187,7 @@ class Game {
          if (this.player.playerX + 3 > 660) {
            this.player.playerX -= 8;
          } else {
-           this.player.playerX += 2
+           this.player.playerX += 4;
            if (this.space && this.player.dashReady > 0) {
              this.player.dashReady -= 1
              let interval =  setInterval(() => this.player.dashRight(),20);
@@ -202,7 +202,7 @@ class Game {
           if (this.player.playerX - 3 < 0) {
             this.player.playerX += 8;
           } else {
-            this.player.playerX -= 2;
+            this.player.playerX -= 4;
             if (this.space && this.player.dashReady > 0) {
               this.player.dashReady -= 1
               let interval =  setInterval(() => this.player.dashLeft(),20);
@@ -215,7 +215,7 @@ class Game {
          if(this.player.playerY - 3 < 1 - this.offsetY) {
            this.player.playerY += 8;
          } else {
-           this.player.playerY -= 2.25;
+           this.player.playerY -= 4.25;
            if (this.space && this.player.dashReady > 0) {
              this.player.dashReady -= 1
              let interval =  setInterval(() => this.player.dashUp(),20);
@@ -228,7 +228,7 @@ class Game {
            if(this.player.playerY + 3 > this.canvas.height - this.offsetY - 50) {
              this.player.playerY -= 8;
            } else {
-             this.player.playerY += 1.75;
+             this.player.playerY += 3.75;
              if (this.space && this.player.dashReady > 0) {
                this.player.dashReady -= 1
                let interval =  setInterval(() => this.player.dashDown(),20);
