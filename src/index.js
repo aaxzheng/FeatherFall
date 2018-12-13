@@ -4,15 +4,17 @@ import Collectable from './collectable';
 import Treasure from './treasure';
 import Snowflakes from './snowflakes';
 import Game from './game';
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded",()=> {
+
+document.getElementById("game-start").addEventListener("click", () => {
   const game = new Game();
-  function setup() {
+  // function setup() {
     document.getElementById("game-start").classList.add("hide");
     game.draw();
     game.img.onload = function() {
       game.init();
     };
-  }
+  // }
 
   game.canvas.addEventListener('keydown',(e) => {
     game.checkKeyDown(e);
@@ -22,8 +24,9 @@ document.addEventListener("DOMContentLoaded", () => {
     game.checkKeyUp(e);
   },false);
 
-  document.getElementById("start-btn").addEventListener("click",setup());
+  // document.getElementById("start-btn").addEventListener("click",setup());
 
 
 
+});
 });

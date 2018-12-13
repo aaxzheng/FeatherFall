@@ -134,8 +134,12 @@
 
 .start-btn {
   font-family: "Marck Script",cursive;
-  background-color: none;
-  box-sizing: none;
+  background: none;
+  /* box-sizing: none; */
+  cursor:pointer;
+  font-size: 48px;
+  border-style: none;
+  border:none;
 }
 
 .hide {
