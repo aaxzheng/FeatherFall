@@ -4,6 +4,9 @@
   z-index: 2;
 }
 
+button:focus {
+  outline:none;
+}
 #canvas:focus {
   outline: none;
 }
@@ -46,7 +49,7 @@
 
 #info li {
   margin-bottom:10px;
-  font-size: 22px;
+  font-size: 20px;
   list-style: none;
 }
 
@@ -144,4 +147,54 @@
 
 .hide {
   display:none;
+}
+
+.game-over {
+  height:500px;
+  width:710px;
+  font-family: "Marck Script",cursive;
+
+  background-color: black;
+  position:absolute;
+  z-index:4;
+  display:none;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  color:red;
+  background-image: url("./oldbook.jpeg");
+  background-size: cover;
+}
+
+.game-over-text {
+  font-size:64px;
+}
+
+.end-score {
+  font-size: 48px !important;
+}
+
+.retry-btn {
+  font-family: "Marck Script",cursive;
+  background: none;
+  color: red;
+  cursor:pointer;
+  font-size: 48px;
+  border-style: none;
+  border:none;
+}
+
+.show {
+  display:flex;
+}
+
+.title-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.author{
+  font-family: "Marck Script",cursive;
+  font-size: 40px;
 }

@@ -47,6 +47,7 @@ class Game {
      this.init = this.init.bind(this);
      this.fillOffscreen = this.fillOffscreen.bind(this);
      this.step = this.step.bind(this);
+     this.gameWin = this.gameWin.bind(this);
   }
 
 
@@ -63,6 +64,7 @@ class Game {
         setTimeout(()=> this.changeDirection(),4000);
       } else if (this.offsetY + this.scrollY > 0) {
         this.scrollY = 0;
+        setTimeout(()=>this.gameWin(),2000);
       }
       this.ctx.translate(0,this.scrollY);
       this.offsetY += this.scrollY;
@@ -253,11 +255,24 @@ class Game {
         document.getElementById('jewels').innerHTML= `Clusters: ${this.player.jewels}`
       }
 
+      gameWin() {
+        document.getElementById('win-score').innerHTML= `Score: ${this.player.score}`;
+        document.getElementById('final-score').innerHTML= `Final Score: ${this.player.score + 15000}`;
+        document.getElementById("win-retry").addEventListener("click", () => location.reload());
+        document.getElementById("game-win").classList.add("show");
+        debugger;
+        // return;
+      }
+
        checkDeath() {
         if (this.player.health <= 0 || this.player.outOfBounds(this.canvas,this.offsetY)) {
           this.ctx.clearRect(-this.offsetX,-this.offsetY,700,10000);
           this.context.clearRect(-this.offsetX,-this.offsetY,700,10000);
-          document.location.reload();
+          document.getElementById("game-over").classList.add("show");
+          document.getElementById('end-score').innerHTML= `Score: ${this.player.score}`;
+
+          document.getElementById("end-retry").addEventListener("click", () => location.reload());
+          return;
           // game();
         } else {
           return;
