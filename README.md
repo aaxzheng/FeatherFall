@@ -1,4 +1,4 @@
-# FeatherFall Proposal
+# FeatherFall
 ## Object of the Game 
 [Live Link](https://aaxzheng.github.io/FeatherFall)\
 FeatherFall is a JavaScript-based browser game that utilizes vanilla JavaScript as well as Canvas to render and manipulate a game board. The player will navigate a small avatar down a simple obstacle course as the screen scrolls down. On the way there will be collectables that will add points to the player's score and once the avatar reaches the bottom, the screen will begin to scroll upward and the player will need to navigate the obstacle course backwards.
