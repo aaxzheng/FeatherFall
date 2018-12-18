@@ -3,12 +3,14 @@ import Obstacle from './obstacle'
 import Collectable from './collectable';
 import Treasure from './treasure';
 import Snowflakes from './snowflakes';
+import Sound from './sfx';
+
 class Game {
   constructor() {
 
      this.img = new Image();
     this.img.src = "../FeatherFall/assets/ROfalcon.png";
-
+    this.sound = new Sound("src/Snowfall.ogg")
      this.canvas = document.getElementById('canvas');
      this.offscreenCanvas = document.createElement('canvas');
      this.context = this.offscreenCanvas.getContext('2d');
@@ -48,6 +50,7 @@ class Game {
      this.fillOffscreen = this.fillOffscreen.bind(this);
      this.step = this.step.bind(this);
      this.gameWin = this.gameWin.bind(this);
+     this.sound.play();
   }
 
 
@@ -268,6 +271,7 @@ class Game {
         if (this.player.health <= 0 || this.player.outOfBounds(this.canvas,this.offsetY)) {
           this.ctx.clearRect(-this.offsetX,-this.offsetY,700,10000);
           this.context.clearRect(-this.offsetX,-this.offsetY,700,10000);
+          this.sound.pause();
           document.getElementById("game-over").classList.add("show");
           document.getElementById('end-score').innerHTML= `Score: ${this.player.score}`;
 

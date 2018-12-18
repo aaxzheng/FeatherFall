@@ -1,3 +1,5 @@
+import sound from './sfx';
+
 class Treasure {
   constructor(ctx,x,y) {
     this.x = x;
@@ -12,7 +14,8 @@ class Treasure {
       1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
       2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,
       3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,
-    ]
+    ];
+    this.sound = new sound("src/coin.wav");
   }
 
   render(player,offsetY) {
@@ -28,7 +31,7 @@ class Treasure {
       this.checkY(player,this.y,20,this.x,20);
       this.checkX(player,this.x,20,this.y,20);
       }
-    }  
+    }
   }
 
   drawSprite() {
@@ -42,10 +45,14 @@ class Treasure {
     if (player.checkModelY(partY,height/1.5) && player.playerY <= partY && player.checkModelX(partX,width*1.25)) {
       this.collected = true;
       player.jewels += 0.5;
+      this.sound.play();
+
     }
     else if (player.checkModelY(partY,height/1.5) && player.playerY >= partY && player.checkModelX(partX,width*1.25)) {
       this.collected = true;
       player.jewels += 0.5;
+      this.sound.play();
+
     } else {
       return;
     }
@@ -54,10 +61,14 @@ class Treasure {
     if (player.checkModelX(x,width*1.25) && player.playerX <= x && player.checkModelY(y,height/1.5)) {
       this.collected = true;
       player.jewels += 0.5;
+      this.sound.play();
+
     }
     else if (player.checkModelX(x,width*1.25) && player.playerX >= x && player.checkModelY(y,height/1.5)) {
       this.collected = true;
       player.jewels += 0.5;
+      this.sound.play();
+
     } else {
       return;
     }

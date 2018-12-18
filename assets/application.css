@@ -198,3 +198,8 @@ button:focus {
   font-family: "Marck Script",cursive;
   font-size: 40px;
 }
+
+#attributed {
+  font-size:18px;
+  margin-top:60px;
+}

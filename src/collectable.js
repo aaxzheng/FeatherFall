@@ -1,3 +1,5 @@
+import sound from "./sfx";
+
 class Collectable {
   constructor(ctx,x,y) {
     this.x = x;
@@ -16,7 +18,8 @@ class Collectable {
       5,5,5,5,5,5,5,
       6,6,6,6,6,6,6,
       7,7,7,7,7,7,7
-    ]
+    ];
+    this.sound = {};
   }
 
   render(player,offsetY) {
@@ -45,24 +48,35 @@ class Collectable {
   }
   checkY(player,partY,height,partX,width) {
     if (player.checkModelY(partY,height/1.5) && player.playerY <= partY && player.checkModelX(partX,width*1.25)) {
+      this.sound = new sound("src/coin.wav");
       this.collected = true;
       player.coins += 0.5;
+      this.sound.play();
     }
     else if (player.checkModelY(partY,height/1.5) && player.playerY >= partY && player.checkModelX(partX,width*1.25)) {
+      this.sound = new sound("src/coin.wav");
       this.collected = true;
       player.coins += 0.5;
+      this.sound.play();
+
     } else {
       return;
     }
   }
   checkX(player,x,width,y,height) {
     if (player.checkModelX(x,width*1.25) && player.playerX <= x && player.checkModelY(y,height/1.5)) {
+      this.sound = new sound("src/coin.wav");
       this.collected = true;
       player.coins += 0.5;
+      this.sound.play();
+
     }
     else if (player.checkModelX(x,width*1.25) && player.playerX >= x && player.checkModelY(y,height/1.5)) {
+      this.sound = new sound("src/coin.wav");
       this.collected = true;
       player.coins += 0.5;
+      this.sound.play();
+
     } else {
       return;
     }
