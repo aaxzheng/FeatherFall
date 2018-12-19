@@ -263,7 +263,6 @@ class Game {
         document.getElementById('final-score').innerHTML= `Final Score: ${this.player.score + 15000}`;
         document.getElementById("win-retry").addEventListener("click", () => location.reload());
         document.getElementById("game-win").classList.add("show");
-        debugger;
         // return;
       }
 

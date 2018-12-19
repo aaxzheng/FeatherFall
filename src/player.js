@@ -26,7 +26,7 @@ class Player {
 
   checkModelX(obsX,width) {
     for (let i = this.playerX + 12; i <= this.playerX + 40; i++) {
-      // debugger;
+
       if (i >= obsX && i <= obsX + width) {
         return true;
       }
@@ -56,7 +56,6 @@ class Player {
   }
 
   dashLeft() {
-    // debugger;
     if (this.dashReady >= 0) {
       this.playerX -= 8;
 

@@ -33,7 +33,6 @@ class Snowflakes {
   }
 
   updatePosition(offsetY) {
-    // debugger;
     this.height = canvas.height + -offsetY;
     for (let i = 0; i < this.maxCount; i++) {
       let snowflake = this.particles[i];
