@@ -1,3 +1,4 @@
+
 import Player from './player';
 import Obstacle from './obstacle'
 import Collectable from './collectable';

@@ -144,11 +144,8 @@ class Game {
       window.requestAnimationFrame(this.step);
     }
 
-    // let gameKeys = [];
-    // movement(playerX,playerY,this.offsetY);
     checkKeyUp(e) {
 
-        // gameKeys[e.keyCode] = false;
         if (e.keyCode == 38) {
           this.upArrow = false;
         }
@@ -161,15 +158,8 @@ class Game {
         if (e.keyCode == 40) {
           this.downArrow = false;
         }
-        // if (e.keyCode == 32) {
-        //   this.space = true;
-        // }
     }
     checkKeyDown(e) {
-
-
-      // gameKeys = gameKeys || [];
-      // gameKeys[e.keyCode] = true;
       if (e.keyCode == 38) {
         this.upArrow = true;
       }
