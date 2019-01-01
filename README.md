@@ -10,11 +10,14 @@ FeatherFall is a JavaScript-based browser game that utilizes vanilla JavaScript 
   * The player can use the space bar to dash in any direction they choose.
   * The game is over when the player's avatar gets trapped between the viewable screen and an obstacle.
 ## Code Snippets 
-A small snippet of how the player is able to control the avatar based on direction
+I found that the arrow keys often have a slight delay before committing to a continous input. To avoid stuttering movement and restrictive directional inputs, I used booleans that are changed based on when the key is pressed down and released. 
+
+
+A small snippet of how the player is able to control the avatar based on direction. The space key is used to modify whether or not the avatar is dashing at the moment.
 ![image](https://user-images.githubusercontent.com/40276721/50575988-5adb6180-0dd6-11e9-815d-01e9010ca9dd.png)
 
 
-   Another snippet of how collision is detected per obstacle
+   Another snippet of how collision is detected per obstacle. Since every slice of the obstacle course is made of individual parts, the collision is detected on each component and pushes back an appropriate amount.
 ![image](https://user-images.githubusercontent.com/40276721/50576001-b4dc2700-0dd6-11e9-8d2c-352b2dd4ce06.png)
 
 
