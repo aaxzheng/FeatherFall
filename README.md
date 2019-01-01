@@ -9,6 +9,12 @@ FeatherFall is a JavaScript-based browser game that utilizes vanilla JavaScript 
   * Every obstacle and collectable has a hitbox and given special collision events when interacting with the player avatar.
   * The player can use the space bar to dash in any direction they choose.
   * The game is over when the player's avatar gets trapped between the viewable screen and an obstacle.
+## Code Snippets 
+A small snippet of how the player is able to control the avatar based on direction
+![image](https://user-images.githubusercontent.com/40276721/50575988-5adb6180-0dd6-11e9-815d-01e9010ca9dd.png)
+Another snippet of how collision is detected per obstacle
+
+
 ## Technologies 
 * Vanilla JS
 * Canvas
