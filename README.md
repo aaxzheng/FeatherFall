@@ -14,7 +14,8 @@ I found that the arrow keys often have a slight delay before committing to a con
 ![image](https://user-images.githubusercontent.com/40276721/50576059-8a3e9e00-0dd7-11e9-895d-28c62d23da12.png)
 
 
-  A small snippet of how the player is able to control the avatar based on direction. The space key is used to modify whether or not the avatar is dashing at the moment.
+  A small snippet of how the player is able to control the avatar based on direction. The space key is used to modify whether   or not the avatar is dashing at the moment.
+
 ![image](https://user-images.githubusercontent.com/40276721/50575988-5adb6180-0dd6-11e9-815d-01e9010ca9dd.png)
 
 
