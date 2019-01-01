@@ -11,9 +11,10 @@ FeatherFall is a JavaScript-based browser game that utilizes vanilla JavaScript 
   * The game is over when the player's avatar gets trapped between the viewable screen and an obstacle.
 ## Code Snippets 
 I found that the arrow keys often have a slight delay before committing to a continous input. To avoid stuttering movement and restrictive directional inputs, I used booleans that are changed based on when the key is pressed down and released. 
+![image](https://user-images.githubusercontent.com/40276721/50576059-8a3e9e00-0dd7-11e9-895d-28c62d23da12.png)
 
 
-A small snippet of how the player is able to control the avatar based on direction. The space key is used to modify whether or not the avatar is dashing at the moment.
+  A small snippet of how the player is able to control the avatar based on direction. The space key is used to modify whether or not the avatar is dashing at the moment.
 ![image](https://user-images.githubusercontent.com/40276721/50575988-5adb6180-0dd6-11e9-815d-01e9010ca9dd.png)
 
 
