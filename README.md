@@ -12,7 +12,10 @@ FeatherFall is a JavaScript-based browser game that utilizes vanilla JavaScript 
 ## Code Snippets 
 A small snippet of how the player is able to control the avatar based on direction
 ![image](https://user-images.githubusercontent.com/40276721/50575988-5adb6180-0dd6-11e9-815d-01e9010ca9dd.png)
-Another snippet of how collision is detected per obstacle
+
+
+   Another snippet of how collision is detected per obstacle
+![image](https://user-images.githubusercontent.com/40276721/50576001-b4dc2700-0dd6-11e9-8d2c-352b2dd4ce06.png)
 
 
 ## Technologies 
