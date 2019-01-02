@@ -11,16 +11,84 @@ FeatherFall is a JavaScript-based browser game that utilizes vanilla JavaScript 
   * The game is over when the player's avatar gets trapped between the viewable screen and an obstacle.
 ## Code Snippets 
 I found that the arrow keys often have a slight delay before committing to a continous input. To avoid stuttering movement and restrictive directional inputs, I used booleans that are changed based on when the key is pressed down and released. 
-![image](https://user-images.githubusercontent.com/40276721/50576059-8a3e9e00-0dd7-11e9-895d-28c62d23da12.png)
+    
+    checkKeyUp(e) {
 
+        if (e.keyCode == 38) {
+          this.upArrow = false;
+        }
+        if (e.keyCode == 37) {
+          this.leftArrow = false;
+        }
+        if (e.keyCode == 39) {
+          this.rightArrow = false;
+        }
+        if (e.keyCode == 40) {
+          this.downArrow = false;
+        }
+    }
+    checkKeyDown(e) {
+      if (e.keyCode == 38) {
+        this.upArrow = true;
+      }
+      if (e.keyCode == 37) {
+        this.leftArrow = true;
+      }
+      if (e.keyCode == 39) {
+        this.rightArrow = true;
+      }
+      if (e.keyCode == 40) {
+        this.downArrow = true;
+      }
+      if (e.keyCode == 32) {
+        this.space = true;
+      }
+    }
 
   A small snippet of how the player is able to control the avatar based on direction. The space key is used to modify whether   or not the avatar is dashing at the moment.
+     
+     moveCharacter() {
+       if (this.rightArrow) {
 
-![image](https://user-images.githubusercontent.com/40276721/50575988-5adb6180-0dd6-11e9-815d-01e9010ca9dd.png)
+         if (this.player.playerX + 3 > 660) {
+           this.player.playerX -= 8;
+         } else {
+           this.player.playerX += 4;
+           if (this.space && this.player.dashReady > 0) {
+             this.player.dashReady -= 1
+             let interval =  setInterval(() => this.player.dashRight(),20);
+             setTimeout(() => this.player.stopDash(interval),360);
+           }
+           this.space = false
+         }
+
+       }
+  
+
 
 
    Another snippet of how collision is detected per obstacle. Since every slice of the obstacle course is made of individual parts, the collision is detected on each component and pushes back an appropriate amount.
-![image](https://user-images.githubusercontent.com/40276721/50576001-b4dc2700-0dd6-11e9-8d2c-352b2dd4ce06.png)
+     
+     checkY(player,partY,height,partX,width) {
+         if (player.checkModelY(partY,height) && player.playerY <= partY && player.checkModelX(partX,width)) {
+           player.playerY -= 6;
+         }
+         else if (player.checkModelY(partY,height) && player.playerY >= partY && player.checkModelX(partX,width)) {
+           player.playerY += 6;
+         } else {
+           return;
+         }
+       }
+       checkX(player,x,width,y,height) {
+         if (player.checkModelX(x,width) && player.playerX <= x && player.checkModelY(y,height)) {
+           player.playerX -= 6;
+         }
+         else if (player.checkModelX(x,width) && player.playerX >= x && player.checkModelY(y,height)) {
+           player.playerX += 6;
+         } else {
+           return;
+         }
+       }
 
 
 ## Technologies 
